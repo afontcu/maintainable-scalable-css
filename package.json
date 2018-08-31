@@ -1,0 +1,24 @@
+{
+  "name": "maintainable-scalable-css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mdx-deck": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "mdx-deck deck.mdx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afontcu/maintainable-scalable-css.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afontcu/maintainable-scalable-css/issues"
+  },
+  "homepage": "https://github.com/afontcu/maintainable-scalable-css#readme"
+}
