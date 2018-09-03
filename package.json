@@ -1,22 +1,22 @@
 {
   "name": "maintainable-scalable-css",
   "version": "1.0.0",
-  "description": "",
+  "license": "MIT",
+  "description": "Maintainable, scalable CSS talk",
+  "author": "Adrià Fontcuberta",
   "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx"
+  },
   "dependencies": {
     "mdx-deck": "^1.7.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "start": "mdx-deck deck.mdx"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/afontcu/maintainable-scalable-css.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/afontcu/maintainable-scalable-css/issues"
   },
