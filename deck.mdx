@@ -115,7 +115,9 @@ LOL no. We sucked at good practices.
 ---
 What do you mean by "good pracites"?
 ---
-Standard good practices from other programming languages.
+## Good ol' principles
+
+Standard good practices from other programming languages
 
 Don't Repeat Yourself (DRY)
 
@@ -158,7 +160,7 @@ al contenido.
 <div class="remove-modal">
   <h1>Remove the product</h1>
   <div>
-    <img src="" alt=""/>
+    <img src="" alt="" />
     <p>This action cannot be undone.</p>
   </div>
   <div>
@@ -186,7 +188,8 @@ al contenido.
 ```notes
 .remove-modal?
 
-"Separation of Concerns"?
+"Separation of Concerns"? Nuestro CSS está totalmente ligado a nuestro HTML.
+No puedes editar uno sin editar el otro.
 ```
 ---
 <Image src="images/2-modals.png" />
@@ -230,31 +233,75 @@ HTML, y así poder reaprovechar el CSS en diferentes proyectos.
 ---
 visual CSS > semantic CSS
 ---
+what if
+---
+<Image src="images/modal-alert.png" />
+---
+```scss
+.modal-messages {
+  .modal-icon { ... }
+  .modal-message { ... }
+}
+
+.alert-content {
+  .alert-img { ... }
+  .alert-text { ... }
+}
+```
+
+```notes
+Volvemos a estar en las mismas. Es el mismo elemento? Podemos seguir reduciento
+nuestros bloques?
+
+Recordemos SRP: nuestros elementos, modulos, clases, whatever, deberían hacer
+una cosa, solamente una, y hacerla bien. Qué tal esto?
+```
+---
+```scss
+.text-with-icon {}
+```
+---
+```scss
+.icon-text {}
+```
+
+```notes
+No estabamos inventando nada nuevo. Esto ya existia.
+
+Tanto el concepto de "CSS visual" como la metáfora concreta de "icon-text" o 
+cómo quieras llamarlo.
+```
+---
+export default Invert
+
+> The **media object** is an image to the left, with descriptive content to the right.
+
+[Nicole Sullivan](http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/)
+---
+<img src="images/media-object.png" />
+---
 ## Goal achieved
 
 Our building blocks (css classes) were now reusable across projects.
 
 _(remember: digital agency context)_
 ---
-From styling pages to creating design systems.
+we were not building pages anymore.
+
+we were building components of a system.
+---
+from styling pages to creating design systems.
 ---
 # Design systems
 * Rules
 * Constraints
 * Principles
 ---
-* Rules: Spacing values should be proportional.
-* Constraints: Only 5 avilable spacing sizes.
-* Principles: Spacing should be consistent across project.
----
-## Principles in a design system
-CSS is a programming language(?), so...
----
-## OOCSS (Object-oriented CSS)
-* Separate structure and skin
-* Separate container and content
+**Rules**: Spacing values must be proportional.
 
-- Nicole Sullivan
+**Constraints**: Only 5 spacing values available.
+
+**Principles**: Spacing should be consistent across elements.
 ---
 ```scss
 $global-baseline: 6px;
@@ -268,7 +315,7 @@ $unit-factor-large:  8;
 $unit-factor-huge:  16;
 ```
 ---
-Results in
+results in
 
 ```scss
 $global-spacing-unit-tiny;  // 6px
@@ -285,12 +332,6 @@ Tendríamos nuestro theme.js o lo que sea, y allí crearíamos los valores
 válidos para nuestro sistema.
 ```
 ---
-## Objects
-Immutable layout patterns
-(Captura d'un media)
----
-
----
 Styles based on systems became harmonious.
 ---
 ```scss
@@ -304,13 +345,124 @@ $global-font-sizes: (
 );
 ```
 ---
-export default Invert
+we had the right pieces.
 
-> The best way of writing great CSS is **to avoid writing CSS**.
-
-Me
+we still needed conventions, structure and organization.
 ---
-Why "utility-first"?
+# ITCSS + namespaced BEM
+Inverted Triangle CSS (by [Harry Roberts](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528))
+
+Block Element Modifier (by Yandex)
+---
+## Why "inverted triangle"?
+
+from global to local.
+
+from generic to concrete.
+
+from low specificity to high specificity.
+---
+```bash
+scss/
+  1-Settings/
+  2-Tools/
+  3-Base/
+  4-Generic/
+  5-Objects/
+  6-Components/
+  7-Utilities/
+```
+---
+/scss/1-Settings/_settings.font-sizing.scss
+
+```scss
+$global-font-sizes: (
+  h1: 32px,
+  h2: 28px,
+  h3: 24px,
+  h4: 20px,
+  h5: 18px,
+  h6: 16px
+);
+```
+---
+## Why namespaced BEM?
+
+Because we need to reach an agreement. How to name things?
+
+How to identify components and objects?
+
+A Media Object has several parts. How do we identify them?
+---
+```css
+.block {}
+
+.block__element {}
+
+.block--modifier {}
+
+.block__element--modifier {}
+```
+
+(plus namespaces)
+---
+## Namespaces
+
+Objects (.o-)
+
+Components (.c-)
+
+Utilities (.u-)
+---
+/scss/5-Objects/_objects.media.scss
+
+```scss
+.o-media { display: flex; align-items: flex-start; }
+
+.o-media__body { flex: 1; }
+
+.o-media__image { margin-right: $global-spacing-unit; }
+
+.o-media--large { margin-right: $global-spacing-unit-large; }
+```
+---
+what if
+---
+```scss
+.o-media--large {
+  margin-right: $global-spacing-unit-large; }
+
+.c-list_item--large {
+  margin-right: $global-spacing-unit-large; }
+
+.c-header--spaced {
+  margin-right: $global-spacing-unit-large; }
+```
+---
+```scss
+.u-margin-right-large {
+  margin-right: $global-spacing-unit-large;
+}
+```
+---
+Dead by modifiers
+---
+```jsx
+<nav class="c-nav c-nav--large c-nav--primary-color c-nav--boxed
+            c-nav--rounded c-nav--full-width">
+    <ul>
+      <li class="c-nav__item c-nav__item--boxed c-nav__item--black
+                 c-nav__item--padded-bottom c-nav__item--huge">
+      </li>
+    </ul>
+</nav>
+```
+
+```notes
+what if we start out writing utility classes, and create components when needed?
+```
+---
+# Utility-first CSS
 
 ```notes
 "first" significa que empezamos usando los bloques "Legos" más pequeños.
@@ -323,6 +475,27 @@ o lenguaje para construir aplicaciones.
 Así evitamos hacer abstracciones prematuras.
 ```
 ---
+export default Invert
+
+> The best way of writing great CSS is **to avoid writing CSS**.
+
+Me
+---
+create a lot of small, reusable, focused CSS classes, and use them to build your UI.
+---
+```jsx
+<nav class="c-nav c-nav--boxed u-margin-right-large u-color-primary
+            u-radius-circle u-width-100">
+    <ul>
+      <li class="c-nav__item c-nav__item--boxed u-color-black
+                 u-padding-bottom-small u-margin-left-huge">
+      </li>
+    </ul>
+</nav>
+```
+---
+It is possible to build a new component without wiring a single line of CSS.
+---
 ```jsx
 <nav class="u-padding u-margin-bottom-tiny u-text-dark u-flex
             u-background-primary u-text-dark u-flex-center">
@@ -330,7 +503,7 @@ Así evitamos hacer abstracciones prematuras.
 </nav>
 ```
 ```notes
-Tiene sentido crear el componente "Nav"? Es la navegación principal. Si tienes
+Tiene sentido crear el componente "MainNav"? Es la navegación principal. Si tienes
 suficiente con las utilidades, para que crear una abstracción de algo que no 
 vas a reutilizar?
 
