@@ -11,24 +11,24 @@ import { Invert } from 'mdx-deck/layouts'
 
 
 ---
-According to most neuroscience studies, people's number one fear is **public speaking**.
+according to most neuroscience studies, people's number one fear is **public speaking**.
 
-Number two is **death**.
+number two is **death**.
 ```notes
 Esto significa dos cosas:
 
 1) La primera, que en un entierro la gente prefiere estar en el ataúd que dando el réquiem
 2) La segunda, que estoy venciendo a la muerte.
-
-Approaches we took with CSS are still relevant to how we approach design systems with React. Same intent, different implementation.
 ```
+---
+<Image src="images/death.png" />
 ---
 # Maintainable, scalable CSS
 From the trenches
 
 ---
 # Adrià Fontcuberta
-Software Engineer at Calidae
+SW Engineer at Calidae
 
 @afontcu_
 ---
@@ -47,9 +47,12 @@ Webmaster at Calidae
 
 @afontcu_
 ---
-What happened with CSS?
+what happened with CSS?
 ---
-It all started with CSS Zen Garden
+it was ~2008.
+
+it all started with CSS Zen Garden
+
 ```notes
 Demostraba que podiamos crear miles de versiones de una misma web sin tocar
 una sola linea de HTML. Y eso era bueno. Estabamos "separando responsabilidades"
@@ -60,9 +63,9 @@ HTML = contenido y estructura.
 CSS = estilo.
 ```
 ---
-<Image src='images/css-zen-garden.png' />
+<img src='images/css-zen-garden.png' />
 ---
-<Image src='images/css-zen-garden-2.png' />
+<img src='images/css-zen-garden-2.png' />
 ---
 ```css
 .sidebar .design-selection nav ul li a {
@@ -75,11 +78,9 @@ Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo).
 Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
 ```
 ---
-"The HTML remains the same, the only thing that has changed is the external CSS file. Yes, really!"
-
 "HTML is entirely decoupled from the CSS!"
 
-"This is what CSS should look like! We are using The Cascade™"
+"This is what CSS should look like! We are using <strong>The Cascade™</strong>"
 ```notes
 Estabamos escribiendo CSS bien? No se, por el contexto pareciera que sí.
 
@@ -89,7 +90,10 @@ haciendo mal.
 ```
 ---
 # Enter Sass
-With great power comes great responsibility
+
+with great power comes great responsibility.
+---
+what does having great powers and no good practices looks like?
 ---
 <Image src='images/nesting-hell.png' />
 ---
@@ -109,15 +113,13 @@ section.accommodation .content-width .accommodation
 ---
 <Image src='images/inception.png' />
 ---
-Is this really what CSS should look like?
+is this really what CSS should look like?
 ---
-LOL no. We sucked at good practices.
+LOL nope. We sucked at good practices.
 ---
-What do you mean by "good pracites"?
+what do you mean by "good practices"?
 ---
-## Good ol' principles
-
-Standard good practices from other programming languages
+## standard good practices from other languages
 
 Don't Repeat Yourself (DRY)
 
@@ -125,7 +127,7 @@ Single Responsibility Principle (SRP)
 
 ...
 ---
-We didn't quite get them.
+we didn't quite get them.
 ---
 export default Invert
 
@@ -135,14 +137,19 @@ export default Invert
 ---
 "Separation of Concerns"
 ---
-```css
-body.product .content-body-wrapper.tabs-block .switch 
-.offer  section.accommodation .content-width 
-.accommodation .select-accommodation-box .list .map {   
-  width: 100%; height: 300px; }
+# Content-semantic classes
+
+_(a.k.a. classes have "meaning")_
+
+```jsx
+<div class="product">
+    <h1>My product title</h1>
+</div>
 ```
 ---
-Content-semantic class names is not a good idea.
+wow such meaning
+---
+content-semantic class names is not a good idea.
 
 ```notes
 Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
@@ -191,6 +198,12 @@ al contenido.
 "Separation of Concerns"? Nuestro CSS está totalmente ligado a nuestro HTML.
 No puedes editar uno sin editar el otro.
 ```
+---
+we need to decouple CSS from HTML.
+---
+why?
+---
+because:
 ---
 <Image src="images/2-modals.png" />
 
@@ -280,11 +293,51 @@ export default Invert
 ---
 <img src="images/media-object.png" />
 ---
-## Goal achieved
-
-Our building blocks (css classes) were now reusable across projects.
+<Image src="images/media-object-facebook.png" />
+---
+```jsx
+<div class="modal">
+  <h1 class="modal-title">...</h1>
+  <div class="modal-body">
+    <img class="modal-icon" />
+    <p class="modal-message">...</p>
+  </div>
+  <div class="modal-buttons">
+    <button class="btn primary">Yes</buttom>
+    <button class="btn">Cancel</buttom>
+  </div>
+</div>
+```
+---
+```jsx
+<div class="modal">
+  <h1 class="modal-title">...</h1>
+  <div class="media">
+    <img class="media-img" />
+    <p class="media-body">...</p>
+  </div>
+  <div class="modal-buttons">
+    <button class="btn primary">Yes</buttom>
+    <button class="btn">Cancel</buttom>
+  </div>
+</div>
+```
+---
+ok, cool.
+---
+our building blocks (css classes) were now reusable across projects.
 
 _(remember: digital agency context)_
+---
+a modal? nah.
+---
+a component made of components (media, button, card...?).
+
+```notes
+Nos dimos cuenta de algo importante. Hacia falta que estos componentes pequeños
+tuvieran consistencia entre ellos. Además, habia cambiado como veíamos nuestras
+aplicaciones.
+```
 ---
 we were not building pages anymore.
 
@@ -304,7 +357,7 @@ from styling pages to creating design systems.
 **Principles**: Spacing should be consistent across elements.
 ---
 ```scss
-$global-baseline: 6px;
+$baseline: 6px;
 ```
 
 ```scss
@@ -318,11 +371,11 @@ $unit-factor-huge:  16;
 results in
 
 ```scss
-$global-spacing-unit-tiny;  // 6px
-$global-spacing-unit-small; // 12px
-$global-spacing-unit;       // 24px
-$global-spacing-unit-large; // 48px
-$global-spacing-unit-huge;  // 96px
+$global-spacing-unit-tiny  = $baseline * $unit-factor-tiny;  // 6px
+$global-spacing-unit-small = $baseline * $unit-factor-small; // 12px
+$global-spacing-unit       = $baseline * $unit-factor;       // 24px
+$global-spacing-unit-large = $baseline * $unit-factor-large; // 48px
+$global-spacing-unit-huge  = $baseline * $unit-factor-huge;  // 96px
 ```
 
 ```notes
@@ -332,7 +385,7 @@ Tendríamos nuestro theme.js o lo que sea, y allí crearíamos los valores
 válidos para nuestro sistema.
 ```
 ---
-Styles based on systems became harmonious.
+styles based on systems became harmonious.
 ---
 ```scss
 $global-font-sizes: (
@@ -362,18 +415,38 @@ from generic to concrete.
 
 from low specificity to high specificity.
 ---
+<Image src="images/itcss.png" />
+---
 ```bash
-scss/
-  1-Settings/
-  2-Tools/
-  3-Base/
-  4-Generic/
-  5-Objects/
-  6-Components/
-  7-Utilities/
+1-Settings/
+    _colors.scss
+2-Tools/
+    _mixins.scss
+3-Base/
+    _normalize.scss
+4-Generic/
+    _image.scss
+5-Objects/
+    _media.scss
+6-Components/
+    _modal.scss
+7-Utilities/
+    _hidden.scss
 ```
 ---
-/scss/1-Settings/_settings.font-sizing.scss
+/scss/1-Settings/_core.scss
+
+```scss
+$baseline: 6px;
+
+$unit-factor-tiny:   1;
+$unit-factor-small:  2;
+$unit-factor:        4;
+$unit-factor-large:  8;
+$unit-factor-huge:  16;
+```
+---
+/scss/1-Settings/_font-sizing.scss
 
 ```scss
 $global-font-sizes: (
@@ -386,13 +459,28 @@ $global-font-sizes: (
 );
 ```
 ---
-## Why BEM?
+/scss/6-Components/_modal.scss
 
-Because we need to reach an agreement. How to name things?
+```scss
+.modal {
+  ...
+}
 
-How to identify components and objects?
+.modal-buttons {
+  ...
+}
+```
+---
+you get the idea.
+---
+# BEM
 
-A Media Object has several parts. Children. How do we identify them?
+because we needed to reach an agreement:
+how to name things?
+---
+a Media Object has several parts, several children.
+
+how do we identify them?
 ---
 ```css
 .block {}
@@ -414,7 +502,7 @@ A Media Object has several parts. Children. How do we identify them?
 .person__eyes--blue {}
 ```
 ---
-## Namespaces
+# Namespaces
 
 Objects (.o-)
 
@@ -453,7 +541,7 @@ what if
 }
 ```
 ---
-Dead by modifiers
+death by modifiers.
 ---
 ```jsx
 <nav class="c-nav c-nav--large c-nav--primary-color c-nav--boxed
@@ -491,25 +579,54 @@ Me
 ---
 create a lot of small, reusable, focused CSS classes, and use them to build your UI.
 ---
+<Image src="images/remove-the-product.png" />
+---
+```jsx
+<div class="c-modal">
+  <h1 class="c-modal__title u-padding u-text-hairline">...</h1>
+  <div class="o-media o-media--center u-padding">
+    <img class="o-media__img" src="" alt="" />
+    <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+  </div>
+  <div class="u-padding-small u-background-dark-gray
+              u-flex u-flex-justify-between">
+    <button class="c-btn c-btn--ghost">Yes</button>
+    <button class="c-btn c-btn--primary">Cancel</button>
+  </div>
+</div>
+```
+
+```notes
+Creamos componentes cuando y donde hace falta
+```
+---
+<Image src="images/wat.gif" />
+---
+```jsx
+<div class="c-modal">
+  <h1 class="c-modal__title u-padding u-text-hairline">...</h1>
+  <div class="o-media o-media--center u-padding">
+    <img class="o-media__img" src="" alt="" />
+    <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+  </div>
+  <div class="u-padding-small u-background-dark-gray
+              u-flex u-flex-justify-between">
+    <button class="c-btn c-btn--ghost">Yes</button>
+    <button class="c-btn c-btn--primary">Cancel</button>
+  </div>
+</div>
+```
+---
 ```jsx
 <nav class="c-nav c-nav--boxed u-margin-right-large u-color-primary
             u-radius-circle u-width-100">
     <ul>
       <li class="c-nav__item c-nav__item--boxed u-color-black
-                 u-padding-bottom-small u-margin-left-huge">
-      </li>
+                 u-padding-bottom-small u-margin-left-huge">...</li>
     </ul>
 </nav>
 ```
----
-It is possible to build a new component without wiring a single line of CSS.
----
-```jsx
-<nav class="u-padding u-margin-bottom-tiny u-text-dark u-flex
-            u-background-primary u-text-dark u-flex-center">
-  ...
-</nav>
-```
+
 ```notes
 Tiene sentido crear el componente "MainNav"? Es la navegación principal. Si tienes
 suficiente con las utilidades, para que crear una abstracción de algo que no 
@@ -519,3 +636,30 @@ Este es el beneficio principal de utility-first. Abstracciones cuando las
 necesitas, no antes.
 ```
 ---
+it is possible to build a new component without wiring a single line of CSS.
+---
+# Next steps
+---
+JS + CSS = 💖?
+
+```notes
+CSS-in-JS solutions (styled components, spectacle, etc)
+```
+---
+Shadow DOM
+
+```notes
+Native solution for the global nature of HTML, CSS and JS.
+
+Scoped CSS: CSS defined inside shadow DOM is scoped to it. Style rules don't
+leak out and page styles don't bleed in.
+
+Forget naming conflicts! No need for namespaces! Byebye BEM!
+```
+---
+export default Invert
+
+# Thank you! 
+What questions do you have?
+
+(ask me anyting: @afontcu_ on Twitter)
