@@ -1,0 +1,340 @@
+export { default as theme } from './theme'
+import { FullScreenCode } from 'mdx-deck/layouts'
+import { Head } from 'mdx-deck'
+import { Appear } from 'mdx-deck'
+import { Image } from 'mdx-deck'
+import { Invert } from 'mdx-deck/layouts'
+
+<Head>
+  <title>Maintainable, scalable CSS?</title>
+</Head>
+
+
+---
+According to most neuroscience studies, people's number one fear is **public speaking**.
+
+Number two is **death**.
+```notes
+Esto significa dos cosas:
+
+1) La primera, que en un entierro la gente prefiere estar en el ataúd que dando el réquiem
+2) La segunda, que estoy venciendo a la muerte.
+
+Approaches we took with CSS are still relevant to how we approach design systems with React. Same intent, different implementation.
+```
+---
+# Maintainable, scalable CSS
+From the trenches
+
+---
+# Adrià Fontcuberta
+Software Engineer at Calidae
+
+@afontcu_
+---
+# Adrià Fontcuberta
+Frontend Dev at Calidae
+
+@afontcu_
+---
+# Adrià Fontcuberta
+UI Engineer at Calidae
+
+@afontcu_
+---
+# Adrià Fontcuberta
+Webmaster at Calidae
+
+@afontcu_
+---
+What happened with CSS?
+---
+It all started with CSS Zen Garden
+```notes
+Demostraba que podiamos crear miles de versiones de una misma web sin tocar
+una sola linea de HTML. Y eso era bueno. Estabamos "separando responsabilidades"
+porque esto es lo que hay que hacer, no? Separar responsabilidades.
+
+HTML = contenido y estructura.
+
+CSS = estilo.
+```
+---
+<Image src='images/css-zen-garden.png' />
+---
+<Image src='images/css-zen-garden-2.png' />
+---
+```css
+.sidebar .design-selection nav ul li a {
+  display: inline;
+}
+```
+```notes
+Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo).
+
+Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
+```
+---
+"The HTML remains the same, the only thing that has changed is the external CSS file. Yes, really!"
+
+"HTML is entirely decoupled from the CSS!"
+
+"This is what CSS should look like! We are using The Cascade™"
+```notes
+Estabamos escribiendo CSS bien? No se, por el contexto pareciera que sí.
+
+Estabamos escribiendo CSS reaprovechable? Nah. Nuestro CSS dependía al 100%
+de nuestro HTML. Si el objetivo era separar responsabilidades, lo estabamos
+haciendo mal.
+```
+---
+# Enter Sass
+With great power comes great responsibility
+---
+<Image src='images/nesting-hell.png' />
+---
+```css
+body.product .content-body-wrapper.tabs-block .switch 
+.offer  section.accommodation .content-width 
+.accommodation .select-accommodation-box .list .map {   
+  width: 100%; height: 300px; }
+
+body.product .content-body-wrapper.tabs-block .switch .offer 
+section.accommodation .content-width .accommodation 
+.select-accommodation-box  .list .list-content .items 
+.accommodation-info #formAccomodation 
+.accommodation-form .mealplan .select-price input {
+  display: inline-block; }
+```
+---
+<Image src='images/inception.png' />
+---
+Is this really what CSS should look like?
+---
+LOL no. We sucked at good practices.
+---
+What do you mean by "good pracites"?
+---
+Standard good practices from other programming languages.
+
+Don't Repeat Yourself (DRY)
+
+Single Responsibility Principle (SRP)
+
+...
+---
+We didn't quite get them.
+---
+export default Invert
+
+> The worst part about front-end development was that the other people solving your problems were front-end developers
+
+[Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/)
+---
+"Separation of Concerns"
+---
+```css
+body.product .content-body-wrapper.tabs-block .switch 
+.offer  section.accommodation .content-width 
+.accommodation .select-accommodation-box .list .map {   
+  width: 100%; height: 300px; }
+```
+---
+Content-semantic class names is not a good idea.
+
+```notes
+Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
+pared de la habitación que estoy construyendo".
+
+Piensas: "ah mira, una 2x2 gris claro". Puedes hacer lo que quieras con ella.
+
+No puedes reutilizar el propósito de una pieza si este propósito está ligado
+al contenido. 
+```
+---
+<Image src="images/remove-the-product.png" />
+---
+```jsx
+<div class="remove-modal">
+  <h1>Remove the product</h1>
+  <div>
+    <img src="" alt=""/>
+    <p>This action cannot be undone.</p>
+  </div>
+  <div>
+    <button class="remove">Yes</button>
+    <button>Cancel</button>
+  </div>
+</div>
+```
+---
+```scss
+.remove-modal {
+  > h1 { ... }
+  > div {
+      img { ... }
+      p { ... }
+    }
+  > div {
+    > button {
+      &.remove { ... }
+    }
+  }
+}
+```
+
+```notes
+.remove-modal?
+
+"Separation of Concerns"?
+```
+---
+<Image src="images/2-modals.png" />
+
+```notes
+Ahora que?
+
+1. Cosas a sobreescribir: en este caso no, pero es sencillo imaginar un modal
+con un footer un poco más alto, de un color distinto, o una cabecera con una
+imagen. Quién sabe.
+
+2. Duplicar estilos. Aunque solo sea añadiendo los nuevos selectores con los 
+viejos (usando una coma), al final estamos duplicando esos estilos en varios 
+selectors. Muy bien el "don't repeat yourself".
+```
+---
+what if
+---
+```jsx
+<div class="modal">
+  <h1 class="modal-title">...</h1>
+  <div class="modal-body">
+    <img class="modal-icon" />
+    <p class="modal-message">...</p>
+  </div>
+  <div class="modal-buttons">
+    <button class="btn primary">Yes</buttom>
+    <button class="btn">Cancel</buttom>
+  </div>
+</div>
+```
+
+```notes
+DRY? Bueno, ahora nos repetimos en el HTML. Va a haber tantas clases ".modal"
+como modals en la aplicación.
+
+Llegamos a la conclusión que en alguna parte vas a acabar repitiéndote, quieras
+o no. Pero como queremos conseguir algo reusable, lo ideal seria repetirse en
+HTML, y así poder reaprovechar el CSS en diferentes proyectos.
+```
+---
+visual CSS > semantic CSS
+---
+## Goal achieved
+
+Our building blocks (css classes) were now reusable across projects.
+
+_(remember: digital agency context)_
+---
+From styling pages to creating design systems.
+---
+# Design systems
+* Rules
+* Constraints
+* Principles
+---
+* Rules: Spacing values should be proportional.
+* Constraints: Only 5 avilable spacing sizes.
+* Principles: Spacing should be consistent across project.
+---
+## Principles in a design system
+CSS is a programming language(?), so...
+---
+## OOCSS (Object-oriented CSS)
+* Separate structure and skin
+* Separate container and content
+
+- Nicole Sullivan
+---
+```scss
+$global-baseline: 6px;
+```
+
+```scss
+$unit-factor-tiny:   1;
+$unit-factor-small:  2;
+$unit-factor:        4;
+$unit-factor-large:  8;
+$unit-factor-huge:  16;
+```
+---
+Results in
+
+```scss
+$global-spacing-unit-tiny;  // 6px
+$global-spacing-unit-small; // 12px
+$global-spacing-unit;       // 24px
+$global-spacing-unit-large; // 48px
+$global-spacing-unit-huge;  // 96px
+```
+
+```notes
+Funcionaria exactamente igual usando javascript.
+
+Tendríamos nuestro theme.js o lo que sea, y allí crearíamos los valores
+válidos para nuestro sistema.
+```
+---
+## Objects
+Immutable layout patterns
+(Captura d'un media)
+---
+
+---
+Styles based on systems became harmonious.
+---
+```scss
+$global-font-sizes: (
+  h1: 32px,
+  h2: 28px,
+  h3: 24px,
+  h4: 20px,
+  h5: 18px,
+  h6: 16px
+);
+```
+---
+export default Invert
+
+> The best way of writing great CSS is **to avoid writing CSS**.
+
+Me
+---
+Why "utility-first"?
+
+```notes
+"first" significa que empezamos usando los bloques "Legos" más pequeños.
+
+Cuando vemos un patrón que se repite, ese es el momento de crear un componente.
+
+Es exactamente lo mismo que hacemos en React, Vue, Angular, o cualquier framework
+o lenguaje para construir aplicaciones.
+
+Así evitamos hacer abstracciones prematuras.
+```
+---
+```jsx
+<nav class="u-padding u-margin-bottom-tiny u-text-dark u-flex
+            u-background-primary u-text-dark u-flex-center">
+  ...
+</nav>
+```
+```notes
+Tiene sentido crear el componente "Nav"? Es la navegación principal. Si tienes
+suficiente con las utilidades, para que crear una abstracción de algo que no 
+vas a reutilizar?
+
+Este es el beneficio principal de utility-first. Abstracciones cuando las
+necesitas, no antes.
+```
+---
