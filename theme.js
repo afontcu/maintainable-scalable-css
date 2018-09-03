@@ -1,4 +1,4 @@
-import { swiss as theme } from 'mdx-deck/themes'
+import { future as theme } from 'mdx-deck/themes'
 import style from 'react-syntax-highlighter/styles/prism/solarizedlight'
 import scss from 'react-syntax-highlighter/languages/prism/scss'
 
@@ -8,16 +8,31 @@ const monospace =
 export default {
   ...theme,
   monospace,
-  font: 'Tinos, serif',
+  font: 'Satisfy, serif',
   prism: {
     style,
     languages: {
       scss,
     },
   },
+  css: {
+    ...theme.css,
+    textAlign: 'left',
+    blockquote: {
+      paddingLeft: '1em',
+      paddingRight: '1em',
+    },
+    'blockquote + p': {
+      paddingRight: '2em',
+      textAlign: 'right',
+    },
+  },
+  heading: {
+    textTransform: 'inherit',
+  },
   colors: {
     text: '#333',
-    background: '#f1f1f2',
+    background: '#fafafa',
     link: '#1c7cc2',
     pre: '#fff',
     preBackground: '#000',
@@ -29,7 +44,13 @@ export default {
   li: {
     fontFamily: monospace,
     fontSize: '0.8em',
-    padding: '0.2em',
+    lineHeight: '1.4',
+  },
+  link: {
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   transitionDuration: 0, // disable transitions
 }
