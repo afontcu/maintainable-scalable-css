@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/afontcu/maintainable-scalable-css/issues"
   },
-  "homepage": "https://github.com/afontcu/maintainable-scalable-css#readme"
+  "homepage": "https://github.com/afontcu/maintainable-scalable-css#readme",
+  "now": {
+    "alias": "maintainable-scalable-css"
+  }
 }
