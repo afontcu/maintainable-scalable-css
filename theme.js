@@ -22,6 +22,10 @@ export default {
       paddingLeft: '1em',
       paddingRight: '1em',
     },
+    'blockquote > p': {
+      lineHeight: '1.2',
+      fontSize: '1.2em',
+    },
     'blockquote + p': {
       paddingRight: '2em',
       textAlign: 'right',
