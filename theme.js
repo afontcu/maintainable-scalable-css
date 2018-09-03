@@ -34,12 +34,11 @@ export default {
     text: '#333',
     background: '#fafafa',
     link: '#1c7cc2',
-    pre: '#fff',
-    preBackground: '#000',
   },
   p: {
     fontFamily: monospace,
-    fontSize: '1.2em',
+    fontSize: '1.4em',
+    lineHeight: '1.4',
   },
   li: {
     fontFamily: monospace,
