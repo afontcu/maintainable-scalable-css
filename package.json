@@ -2,7 +2,7 @@
   "name": "maintainable-scalable-css",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Maintainable, scalable CSS talk",
+  "description": "Maintainable, scalable CSS talk for Barcelona Software Craftsmanship 2018 and Commit Conf 2018",
   "author": "Adrià Fontcuberta",
   "main": "index.js",
   "scripts": {
