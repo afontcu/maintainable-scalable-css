@@ -349,7 +349,7 @@ we had the right pieces.
 
 we still needed conventions, structure and organization.
 ---
-# ITCSS + namespaced BEM
+# ITCSS + BEM
 Inverted Triangle CSS (by [Harry Roberts](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528))
 
 Block Element Modifier (by Yandex)
@@ -386,13 +386,13 @@ $global-font-sizes: (
 );
 ```
 ---
-## Why namespaced BEM?
+## Why BEM?
 
 Because we need to reach an agreement. How to name things?
 
 How to identify components and objects?
 
-A Media Object has several parts. How do we identify them?
+A Media Object has several parts. Children. How do we identify them?
 ---
 ```css
 .block {}
@@ -403,8 +403,16 @@ A Media Object has several parts. How do we identify them?
 
 .block__element--modifier {}
 ```
+---
+```css
+.person {}
 
-(plus namespaces)
+.person__eyes {}
+
+.person--tall {}
+
+.person__eyes--blue {}
+```
 ---
 ## Namespaces
 
