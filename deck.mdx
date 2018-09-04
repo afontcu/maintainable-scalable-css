@@ -51,8 +51,7 @@ what happened with CSS?
 ---
 it was ~2008.
 
-it all started with CSS Zen Garden
-
+it all started with CSS Zen Garden.
 ```notes
 Demostraba que podiamos crear miles de versiones de una misma web sin tocar
 una sola linea de HTML. Y eso era bueno. Estabamos "separando responsabilidades"
@@ -73,7 +72,9 @@ CSS = estilo.
 }
 ```
 ```notes
-Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo).
+(es gracios perque els links son display inline per defecte)
+
+Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo)
 
 Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
 ```
@@ -119,13 +120,39 @@ LOL nope. We sucked at good practices.
 ---
 what do you mean by "good practices"?
 ---
-## standard good practices from other languages
+## Standard good practices
 
 Don't Repeat Yourself (DRY)
 
 Single Responsibility Principle (SRP)
 
+Principle of Least Astonishment (POLA)
+
 ...
+```notes
+"If a necessary feature has a high astonishment factor, it may be necessary to redesign the feature"
+
+"People are part of the system. The design should match the user's experience, expectations, and mental models."
+```
+---
+POLA (not) in action
+```css
+.qbutton.green {
+  background-color: turquoise;
+}
+```
+
+```css
+.home.column a.product.class300 {
+  width: 300px;
+  margin-left: 20px;
+}
+
+.home.column a.product.class400 {
+  width: 450px;
+  margin-left: 60px;
+}
+```
 ---
 we didn't quite get them.
 ---
@@ -135,6 +162,8 @@ export default Invert
 
 [Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/)
 ---
+we decided this one was cool:
+
 "Separation of Concerns"
 ---
 # Content-semantic classes
@@ -537,7 +566,7 @@ what if
 ---
 ```scss
 .u-margin-right-large {
-  margin-right: $global-spacing-unit-large;
+  margin-right: $global-spacing-unit-large !important;
 }
 ```
 ---
@@ -570,7 +599,7 @@ Cuando vemos un patrón que se repite, ese es el momento de crear un componente.
 Es exactamente lo mismo que hacemos en React, Vue, Angular, o cualquier framework
 o lenguaje para construir aplicaciones.
 
-Así evitamos hacer abstracciones prematuras.
+Así evitamos abstracciones prematuras.
 ```
 ---
 export default Invert
@@ -642,6 +671,8 @@ it is possible to build a new component without writing a single line of CSS.
 ---
 # Next steps
 ---
+constraints over conventions.
+---
 JS + CSS = 💖?
 
 ```notes
@@ -659,9 +690,21 @@ leak out and page styles don't bleed in.
 Forget naming conflicts! No need for namespaces! Byebye BEM!
 ```
 ---
+# (Our) Learnings
+
+<ul>
+  <Appear>
+  <li>CSS should become our UI building blocks.</li>
+  <li>Forget about content-related meaning.</li>
+  <li>Use utilities and abstract out components as needed.</li>
+  <li>Agree on structure, naming and principles.</li>
+  <li>Think in components, not pages.</li>
+  </Appear>
+</ul>
+---
 export default Invert
 
-# Thank you! 
+# Thank you ! 
 What questions do you have?
 
 (ask me anyting: @afontcu_ on Twitter)
