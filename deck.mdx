@@ -628,7 +628,10 @@ create a lot of small, reusable, focused CSS classes, and use them to build your
 ```
 
 ```notes
-Creamos componentes cuando y donde hace falta
+Creamos componentes cuando y donde hace falta.
+
+No cada elemento hijo de modal tiene su clase equivalente. Si no hace falta, 
+no la escribimos.
 ```
 ---
 <Image src="images/wat.gif" />
@@ -663,8 +666,27 @@ Tiene sentido crear el componente "MainNav"? Es la navegación principal. Si tie
 suficiente con las utilidades, para que crear una abstracción de algo que no 
 vas a reutilizar?
 
+Y el componente NavItem?
+
 Este es el beneficio principal de utility-first. Abstracciones cuando las
 necesitas, no antes.
+```
+---
+```jsx
+<nav className="c-nav c-nav--boxed u-margin-right-large
+                u-color-primary u-radius-circle u-width-100">
+    <ul>{items.map(item => <NavItem />)}</ul>
+</nav>
+```
+```jsx
+// NavItem.js
+
+export default function() {
+  return (
+    <li className="c-nav-item u-padding-bottom-small
+                   u-color-black u-margin-left-huge">...</li>
+  )
+}
 ```
 ---
 it is possible to build a new component without writing a single line of CSS.
