@@ -30,6 +30,10 @@ export default {
       paddingRight: '2em',
       textAlign: 'right',
     },
+    li: {
+      fontFamily: monospace,
+      paddingBottom: '1.2em',
+    },
   },
   heading: {
     textTransform: 'inherit',
@@ -42,11 +46,6 @@ export default {
   p: {
     fontFamily: monospace,
     fontSize: '1.4em',
-    lineHeight: '1.4',
-  },
-  li: {
-    fontFamily: monospace,
-    fontSize: '0.8em',
     lineHeight: '1.4',
   },
   link: {
