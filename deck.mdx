@@ -652,8 +652,9 @@ no la escribimos.
 ```
 ---
 ```jsx
-<nav class="c-nav c-nav--boxed u-margin-right-large u-color-primary
-            u-radius-circle u-width-100">
+<nav className="c-nav u-padding-horizontal u-padding-vertical-tiny
+                u-color-primary u-margin-right-large
+                u-radius-circle u-width-100">
     <ul>
       <li class="c-nav__item c-nav__item--boxed u-color-black
                  u-padding-bottom-small u-margin-left-huge">...</li>
@@ -666,6 +667,9 @@ Tiene sentido crear el componente "MainNav"? Es la navegación principal. Si tie
 suficiente con las utilidades, para que crear una abstracción de algo que no 
 vas a reutilizar?
 
+Supongamos que la clase `c.nav` la hemos añadido porque tenemos un Element
+y queremos mantener la coherencia de nuestro naminb (Block > Element).
+
 Y el componente NavItem?
 
 Este es el beneficio principal de utility-first. Abstracciones cuando las
@@ -673,23 +677,25 @@ necesitas, no antes.
 ```
 ---
 ```jsx
-<nav className="c-nav c-nav--boxed u-margin-right-large
-                u-color-primary u-radius-circle u-width-100">
+// Nav.js
+
+<nav className="u-padding-horizontal u-padding-vertical-tiny
+                u-color-primary u-margin-right-large
+                u-radius-circle u-width-100">
     <ul>{items.map(item => <NavItem />)}</ul>
 </nav>
 ```
 ```jsx
 // NavItem.js
 
-export default function() {
-  return (
-    <li className="c-nav-item u-padding-bottom-small
-                   u-color-black u-margin-left-huge">...</li>
-  )
-}
+export default () => (
+  <li className="c-nav-item u-padding-bottom-small
+                  u-color-black u-margin-left-huge">...</li>
+)
 ```
 ---
-it is possible to build a new component without writing a single line of CSS.
+it is possible to build a whole new component without writing 
+**a single line of CSS**.
 ---
 # Next steps
 ---
@@ -716,13 +722,19 @@ Forget naming conflicts! No need for namespaces! Byebye BEM!
 
 <ul>
   <Appear>
-  <li>CSS should become our UI building blocks.</li>
-  <li>Forget about content-related meaning.</li>
-  <li>Use utilities and abstract out components as needed.</li>
-  <li>Agree on structure, naming and principles.</li>
-  <li>Think in components, not pages.</li>
+    <li>CSS should become our UI building blocks.</li>
+    <li>Forget about content-related meaning.</li>
+    <li>Use utilities and abstract out components as needed.</li>
+    <li>Agree on structure, naming and principles.</li>
+    <li>Think in components, not pages.</li>
   </Appear>
 </ul>
+
+```notes
+Atomic CSS es un buen "approach" para pensar en componentes y olvidar el concepto
+de diseñar/programar páginas. Contar con el apoyo del diseñador va a ser bastante
+útil, porque este mindset puede cambiar por completo el flujo de trabajo.
+```
 ---
 export default Invert
 
