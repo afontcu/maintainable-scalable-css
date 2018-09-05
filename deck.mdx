@@ -98,35 +98,13 @@ de nuestro HTML. Si el objetivo era separar responsabilidades, lo estabamos
 haciendo mal.
 ```
 ---
-# Enter Sass
+we knew about this thing called "Separation of Concerns"
+---
+HTML for layout
 
-with great power comes great responsibility.
+CSS for styles
 ---
-what does having great powers with no good practices looks like?
----
-<Image src='images/nesting-hell.png' />
----
-```css
-body.product .content-body-wrapper.tabs-block .switch 
-.offer  section.accommodation .content-width 
-.accommodation .select-accommodation-box .list .map {   
-  width: 100%; height: 300px; }
 
-body.product .content-body-wrapper.tabs-block .switch .offer 
-section.accommodation .content-width .accommodation 
-.select-accommodation-box  .list .list-content .items 
-.accommodation-info #formAccomodation 
-.accommodation-form .mealplan .select-price input {
-  display: inline-block; }
-```
----
-<Image src='images/inception.png' />
----
-is this what CSS should look like?
----
-LOL nope. We sucked at good practices.
----
-what do you mean by "good practices"?
 ---
 # Standard good practices
 
@@ -165,6 +143,30 @@ POLA (not) in action
 ---
 we didn't quite get them.
 ---
+# Enter Sass
+
+with great power comes great responsibility.
+---
+what does having great powers with no good practices looks like?
+---
+<Image src='images/nesting-hell.png' />
+---
+```css
+body.product .content-body-wrapper.tabs-block .switch 
+.offer  section.accommodation .content-width 
+.accommodation .select-accommodation-box .list .map {   
+  width: 100%; height: 300px; }
+
+body.product .content-body-wrapper.tabs-block .switch .offer 
+section.accommodation .content-width .accommodation 
+.select-accommodation-box  .list .list-content .items 
+.accommodation-info #formAccomodation 
+.accommodation-form .mealplan .select-price input {
+  display: inline-block; }
+```
+---
+<Image src='images/inception.png' />
+---
 export default Invert
 
 > The worst part about front-end development was that the other people solving your problems were front-end developers
@@ -180,34 +182,16 @@ anyway, principles.
 ---
 we decided this one was cool:
 
-"Separation of Concerns"
+**"Separation of Concerns"**
+---
+HTML for layout
+
+CSS for styling
 ---
 # Content-semantic classes
 
 _(a.k.a. classes have "meaning")_
 
-```jsx
-<div class="product">
-    <h1>My product title</h1>
-</div>
-```
----
-wow such meaning
----
-content-semantic class names is not a good idea.
-
-```notes
-Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
-pared de la habitación que estoy construyendo".
-
-Piensas: "ah mira, una 2x2 gris claro". Puedes hacer lo que quieras con ella.
-
-No puedes reutilizar el propósito de una pieza si este propósito está ligado
-al contenido. 
-```
----
-<Image src="images/remove-the-product.png" />
----
 ```jsx
 <div class="remove-modal">
   <h1>Remove the product</h1>
@@ -222,8 +206,26 @@ al contenido.
 </div>
 ```
 ---
+wow such meaning
+---
+<Image src="images/remove-the-product.png" />
+---
+```jsx
+<div class="remove-product-modal">
+  <h1>Remove the product</h1>
+  <div>
+    <img src="" alt="" />
+    <p>This action cannot be undone.</p>
+  </div>
+  <div>
+    <button class="remove">Yes</button>
+    <button>Cancel</button>
+  </div>
+</div>
+```
+---
 ```scss
-.remove-modal {
+.remove-product-modal {
   > h1 { ... }
   > div {
       img { ... }
@@ -242,6 +244,18 @@ al contenido.
 
 "Separation of Concerns"? Nuestro CSS está totalmente ligado a nuestro HTML.
 No puedes editar uno sin editar el otro.
+```
+---
+content-semantic class names is not a good idea.
+
+```notes
+Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
+pared de la habitación que estoy construyendo".
+
+Piensas: "ah mira, una 2x2 gris claro". Puedes hacer lo que quieras con ella.
+
+No puedes reutilizar el propósito de una pieza si este propósito está ligado
+al contenido. 
 ```
 ---
 we need to decouple CSS from HTML.
