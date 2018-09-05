@@ -79,7 +79,15 @@ Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo)
 Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
 ```
 ---
+export default Invert
+
+"It is a feature!"
+---
+export default Invert
+
 "HTML is entirely decoupled from the CSS!"
+---
+export default Invert
 
 "This is what CSS should look like! We are using <strong>The Cascade™</strong>"
 ```notes
@@ -94,7 +102,7 @@ haciendo mal.
 
 with great power comes great responsibility.
 ---
-what does having great powers and no good practices looks like?
+what does having great powers with no good practices looks like?
 ---
 <Image src='images/nesting-hell.png' />
 ---
@@ -114,13 +122,13 @@ section.accommodation .content-width .accommodation
 ---
 <Image src='images/inception.png' />
 ---
-is this really what CSS should look like?
+is this what CSS should look like?
 ---
 LOL nope. We sucked at good practices.
 ---
 what do you mean by "good practices"?
 ---
-## Standard good practices
+# Standard good practices
 
 Don't Repeat Yourself (DRY)
 
@@ -141,7 +149,8 @@ POLA (not) in action
   background-color: turquoise;
 }
 ```
-
+---
+POLA (not) in action
 ```css
 .home.column a.product.class300 {
   width: 300px;
@@ -161,6 +170,13 @@ export default Invert
 > The worst part about front-end development was that the other people solving your problems were front-end developers
 
 [Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/)
+
+```notes
+Por suerte, gente muy inteligente ha estado pensando en como escalar nuestras
+interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
+```
+---
+anyway, principles.
 ---
 we decided this one was cool:
 
@@ -697,11 +713,20 @@ export default () => (
 it is possible to build a whole new component without writing 
 **a single line of CSS**.
 ---
+"a lot of things happened in 40 minutes"
+---
+# Normandy CSS
+Scss + ITCSS + BEM + Namespaces
+
+[Github link](https://github.com/calidae/normandy-css)
+---
 # Next steps
 ---
 constraints over conventions.
 ---
 JS + CSS = 💖?
+
+CSS Modules?
 
 ```notes
 CSS-in-JS solutions (styled components, spectacle, etc)
@@ -742,3 +767,22 @@ export default Invert
 What questions do you have?
 
 (ask me anyting: @afontcu_ on Twitter)
+---
+# References
+  
+[CSS and scalability - Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/) 
+
+[CSS Utility Classes and "Separation of Concerns" - Adam Wathan](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+
+[Functional Programming, CSS, and your sanity - Jon Gold](https://jon.gold/2015/07/functional-css/)
+
+[Immutable CSS - Harry Roberts](https://csswizardry.com/2015/03/immutable-css/)
+
+[Object Oriented CSS - Nicole Sullivan](https://github.com/stubbornella/oocss/wiki)
+---
+# References
+[About HTML semantics and front-end architecture - Nicholas Gallager](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
+
+[Shadow DOM: Self-Contained Web Components, Eric Bidelman](https://developers.google.com/web/fundamentals/web-components/shadowdom)
+
+[CSS Modules](https://github.com/css-modules/css-modules)
