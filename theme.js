@@ -25,6 +25,8 @@ export default {
     'blockquote > p': {
       lineHeight: '1.2',
       fontSize: '1.2em',
+      paddingLeft: '1em',
+      paddingRight: '1em',
     },
     'blockquote + p': {
       paddingRight: '2em',
@@ -46,11 +48,12 @@ export default {
   },
   p: {
     fontFamily: monospace,
-    fontSize: '1.4em',
+    fontSize: '1.5em',
     lineHeight: '1.4',
   },
   link: {
     textDecoration: 'none',
+    fontSize: '1.6rem',
     '&:hover': {
       textDecoration: 'underline',
     },
