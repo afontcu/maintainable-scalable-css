@@ -32,6 +32,7 @@ export default {
     },
     li: {
       fontFamily: monospace,
+      fontSize: '1.4em',
       paddingBottom: '1.2em',
     },
   },
