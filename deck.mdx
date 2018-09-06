@@ -570,7 +570,7 @@ $global-font-sizes: (
 ---
 you get the idea.
 ---
-# BEM
+# BEM (Block - Element - Modifier)
 
 because we needed to reach an agreement:
 how to name things?
@@ -592,7 +592,8 @@ Y EL ENCAPSULAMIENTO que no nos ofrece el lenguaje out of the box (de momento).
 .block__element {}
 
 .block--modifier {}
-
+```
+```scss
 .block__element--modifier {}
 ```
 ---
@@ -602,7 +603,8 @@ Y EL ENCAPSULAMIENTO que no nos ofrece el lenguaje out of the box (de momento).
 .person__eyes {}
 
 .person--tall {}
-
+```
+```scss
 .person__eyes--blue {}
 ```
 ---
@@ -625,32 +627,42 @@ Utilities (.u-)
 
 .o-media--large { margin-right: $global-spacing-unit-large; }
 ```
+
+```notes
+Esta es nuestra "forma final", como escribimos CSS ahora mismo cuando tenemos
+que crear un componente. Es algo diferente si usamos estos principios sobre
+un framework JS (no namespaces en componentes).
+```
 ---
 what if...
 ---
+death by repetition
+
 ```scss
 .o-media--large {
   margin-right: $global-spacing-unit-large; }
-
+```
+```scss
 .c-list_item--large {
   margin-right: $global-spacing-unit-large; }
-
+```
+```scss
 .c-header--spaced {
   margin-right: $global-spacing-unit-large; }
 ```
----
-```scss
-.u-margin-right-large {
-  margin-right: $global-spacing-unit-large !important;
-}
+
+```notes
+Observamos que nos pasaba esto. Creábamos modifiers usando el SRP, pero no
+podiamos evitar repetirnos. Teniamos decenas de clases haciendo exactamente
+lo mismo, era el naming y nuestras convenciones lo que nos impedía reaprovechar
 ```
 ---
-death by modifiers.
----
+death by modifiers
 ```jsx
 <nav class="c-nav c-nav--large c-nav--primary-color c-nav--boxed
             c-nav--rounded c-nav--full-width">
-    <ul>
+    <ul class="c-nav__list u-nav__list--unpadded
+               c-nav__list--spaced-bottom">
       <li class="c-nav__item c-nav__item--boxed c-nav__item--black
                  c-nav__item--padded-bottom c-nav__item--huge">
       </li>
@@ -661,6 +673,12 @@ death by modifiers.
 ```notes
 Y si empezamos creando elementos con utilidades, y creamos los componentes
 cuando los vamos necesitando, y no antes?
+```
+---
+```scss
+.u-margin-right-large {
+  margin-right: $global-spacing-unit-large !important;
+}
 ```
 ---
 # Utility-first CSS
