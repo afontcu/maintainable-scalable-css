@@ -192,10 +192,10 @@ CSS for styling
 ---
 # Content-semantic classes
 
-_(a.k.a. classes have "meaning")_
+_(a.k.a. classes must have "meaning")_
 
 ```jsx
-<div class="remove-modal">
+<div class="remove-product">
   <h1>Remove the product</h1>
   <div>
     <img src="" alt="" />
@@ -208,12 +208,12 @@ _(a.k.a. classes have "meaning")_
 </div>
 ```
 ---
-wow such meaning
----
 <Image src="images/remove-the-product.png" />
 ---
+wow such meaning
+---
 ```jsx
-<div class="remove-product-modal">
+<div class="remove-product">
   <h1>Remove the product</h1>
   <div>
     <img src="" alt="" />
@@ -227,7 +227,7 @@ wow such meaning
 ```
 ---
 ```scss
-.remove-product-modal {
+.remove-product {
   > h1 { ... }
   > div {
       img { ... }
@@ -242,7 +242,13 @@ wow such meaning
 ```
 
 ```notes
-.remove-modal?
+Y este sería el CSS resultante.
+```
+---
+separation of _what?_
+
+```notes
+.remove-product?
 
 "Separation of Concerns"? Nuestro CSS está totalmente ligado a nuestro HTML.
 No puedes editar uno sin editar el otro.
@@ -261,10 +267,13 @@ al contenido.
 ```
 ---
 we need to decouple CSS from HTML.
+
+```notes
+Primer paso para desacoplar: usar clases como hooks en lugar de puros elementos.
+Conseguimos un primer punto de libertad: No dependemos del markup exacto.
+```
 ---
 why?
----
-because:
 ---
 <Image src="images/2-modals.png" />
 
@@ -280,7 +289,7 @@ viejos (usando una coma), al final estamos duplicando esos estilos en varios
 selectors. Muy bien el "don't repeat yourself".
 ```
 ---
-what if
+what if...
 ---
 ```jsx
 <div class="modal">
@@ -300,14 +309,22 @@ what if
 DRY? Bueno, ahora nos repetimos en el HTML. Va a haber tantas clases ".modal"
 como modals en la aplicación.
 
+Esto puede parecer super lógico, sobretodo si tienes la suerte de haber
+"llegado" al CSS en los últimos tiempos. Pero no partíamos de aquí. No 
+partíamos de crear CSS reusable: nuestro objetivo era crear "clases semánticas".
+
 Llegamos a la conclusión que en alguna parte vas a acabar repitiéndote, quieras
 o no. Pero como queremos conseguir algo reusable, lo ideal seria repetirse en
 HTML, y así poder reaprovechar el CSS en diferentes proyectos.
 ```
 ---
+# Visual CSS
+---
 visual CSS > semantic CSS
 ---
-what if
+relies on classes as a primary hook for styling.
+---
+what if...
 ---
 <Image src="images/modal-alert.png" />
 ---
@@ -356,6 +373,8 @@ export default Invert
 ---
 <Image src="images/media-object-facebook.png" />
 ---
+<Image src="images/modal-alert.png" />
+---
 ```jsx
 <div class="modal">
   <h1 class="modal-title">...</h1>
@@ -384,15 +403,18 @@ export default Invert
 </div>
 ```
 ---
-ok, cool.
----
 our building blocks (css classes) were now reusable across projects.
 
-_(remember: digital agency context)_
+```notes
+En nuestro contexto, es lo máximo a lo que podemos aspirar. Agencia digital
+con varios proyectos, diferentes necesidades, contextos, equipos...
+```
 ---
 a modal? nah.
 ---
-a component made of components (media, button, card...?).
+a component made of components.
+
+**modal** = media + button + card + ...
 
 ```notes
 Nos dimos cuenta de algo importante. Hacia falta que estos componentes pequeños
@@ -404,18 +426,21 @@ we were not building pages anymore.
 
 we were building components of a system.
 ---
-from styling pages to creating design systems.
+from **styling pages** to creating **design systems**.
 ---
 # Design systems
-* Rules
-* Constraints
-* Principles
+
+Rules
+
+Constraints
+
+Principles
 ---
 **Rules**: Spacing values must be proportional.
 
 **Constraints**: Only 5 spacing values available.
 
-**Principles**: Spacing should be consistent across elements.
+**Principles**: Spacing should help establish relationship between elementos.
 ---
 ```scss
 $baseline: 6px;
@@ -432,11 +457,11 @@ $unit-factor-huge:  16;
 results in
 
 ```scss
-$global-spacing-unit-tiny  = $baseline * $unit-factor-tiny;  // 6px
-$global-spacing-unit-small = $baseline * $unit-factor-small; // 12px
-$global-spacing-unit       = $baseline * $unit-factor;       // 24px
-$global-spacing-unit-large = $baseline * $unit-factor-large; // 48px
-$global-spacing-unit-huge  = $baseline * $unit-factor-huge;  // 96px
+$global-spacing-unit-tiny  =  $baseline * $unit-factor-tiny;  // 6px
+$global-spacing-unit-small =  $baseline * $unit-factor-small; // 12px
+$global-spacing-unit       =  $baseline * $unit-factor;       // 24px
+$global-spacing-unit-large =  $baseline * $unit-factor-large; // 48px
+$global-spacing-unit-huge  =  $baseline * $unit-factor-huge;  // 96px
 ```
 
 ```notes
@@ -459,9 +484,20 @@ $global-font-sizes: (
 );
 ```
 ---
+```scss
+$global-colors: (
+  "branding-primary": #fabada,
+  "branding-secondary": #c0ffee,
+);
+```
+---
 we had the right pieces.
 
-we still needed conventions, structure and organization.
+components as building blocks, using constraints, rules, and principles.
+---
+what about **naming**?
+
+what about **file structure**?
 ---
 # ITCSS + BEM
 Inverted Triangle CSS (by [Harry Roberts](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528))
@@ -583,7 +619,7 @@ Utilities (.u-)
 .o-media--large { margin-right: $global-spacing-unit-large; }
 ```
 ---
-what if
+what if...
 ---
 ```scss
 .o-media--large {
@@ -616,7 +652,8 @@ death by modifiers.
 ```
 
 ```notes
-what if we start out writing utility classes, and create components when needed?
+Y si empezamos creando elementos con utilidades, y creamos los componentes
+cuando los vamos necesitando, y no antes?
 ```
 ---
 # Utility-first CSS
