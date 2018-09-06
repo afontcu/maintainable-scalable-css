@@ -707,16 +707,20 @@ create a lot of small, reusable, focused CSS classes, and use them to build your
 <Image src="images/remove-the-product.png" />
 ---
 ```jsx
-<div class="c-modal">
-  <h1 class="c-modal__title u-padding u-text-hairline">...</h1>
-  <div class="o-media o-media--center u-padding">
-    <img class="o-media__img" src="" alt="" />
-    <p class="o-media__body u-text-h5 u-text-hairline">...</p>
-  </div>
-  <div class="u-padding-small u-background-dark-gray
-              u-flex u-flex-justify-between">
-    <button class="c-btn c-btn--ghost">Yes</button>
-    <button class="c-btn c-btn--primary">Cancel</button>
+// Modal.js (o Modal.vue, o...)
+
+<div class="c-card">
+  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+  <div class="c-card__body">
+    <div class="o-media o-media--center u-padding">
+      <img class="o-media__img" src="" alt="" />
+      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+    </div>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">...</button>
+      <button class="c-btn c-btn--primary">...</button>
+    </div>
   </div>
 </div>
 ```
@@ -731,16 +735,20 @@ no la escribimos.
 <Image src="images/wat.gif" />
 ---
 ```jsx
-<div class="c-modal">
-  <h1 class="c-modal__title u-padding u-text-hairline">...</h1>
-  <div class="o-media o-media--center u-padding">
-    <img class="o-media__img" src="" alt="" />
-    <p class="o-media__body u-text-h5 u-text-hairline">...</p>
-  </div>
-  <div class="u-padding-small u-background-dark-gray
-              u-flex u-flex-justify-between">
-    <button class="c-btn c-btn--ghost">Yes</button>
-    <button class="c-btn c-btn--primary">Cancel</button>
+// Modal.js (o Modal.vue, o...)
+
+<div class="c-card">
+  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+  <div class="c-card__body">
+    <div class="o-media o-media--center u-padding">
+      <img class="o-media__img" src="" alt="" />
+      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+    </div>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">...</button>
+      <button class="c-btn c-btn--primary">...</button>
+    </div>
   </div>
 </div>
 ```
@@ -749,7 +757,8 @@ no la escribimos.
 <nav className="c-nav u-padding-horizontal u-padding-vertical-tiny
                 u-color-primary u-margin-right-large
                 u-radius-circle u-width-100">
-    <ul>
+    <ul class="c-nav__list u-nav__list--unpadded
+               c-nav__list--spaced-bottom">
       <li class="c-nav__item c-nav__item--boxed u-color-black
                  u-padding-bottom-small u-margin-left-huge">...</li>
     </ul>
@@ -761,10 +770,13 @@ Tiene sentido crear el componente "MainNav"? Es la navegación principal. Si tie
 suficiente con las utilidades, para que crear una abstracción de algo que no 
 vas a reutilizar?
 
-Supongamos que la clase `c.nav` la hemos añadido porque tenemos un Element
+Supongamos que la clase `c-nav` la hemos añadido porque tenemos un Element
 y queremos mantener la coherencia de nuestro naminb (Block > Element).
 
-Y el componente NavItem?
+Solo hay un MainNav en toda la aplicación, tiene sentido crear el componente?
+Podemos dejar las utilidades?
+
+Y el componente NavItem? Sólo hay uno...si lo encapsulamos en un componente.
 
 Este es el beneficio principal de utility-first. Abstracciones cuando las
 necesitas, no antes.
@@ -776,7 +788,9 @@ necesitas, no antes.
 <nav className="u-padding-horizontal u-padding-vertical-tiny
                 u-color-primary u-margin-right-large
                 u-radius-circle u-width-100">
-    <ul>{items.map(item => <NavItem />)}</ul>
+    <ul class="u-padding-small-bottom">
+      {items.map(item => <NavItem />)}
+    </ul>
 </nav>
 ```
 ```jsx
