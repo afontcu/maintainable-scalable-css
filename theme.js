@@ -25,8 +25,8 @@ export default {
     'blockquote > p': {
       lineHeight: '1.2',
       fontSize: '1.2em',
-      paddingLeft: '1em',
-      paddingRight: '1em',
+      paddingLeft: '2em',
+      paddingRight: '2em',
     },
     'blockquote + p': {
       paddingRight: '2em',
