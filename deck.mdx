@@ -490,10 +490,18 @@ $global-colors: (
   "branding-secondary": #c0ffee,
 );
 ```
+
+```notes
+Esto ya lo podiamos haber hecho antes, con el CSS semántico. Seguramente si.
+Pero es una evolucion, porque en ese momento ni se nos ocurrió que esto pudiera
+tener algún valor. 
+```
 ---
 we had the right pieces.
 
 components as building blocks, using constraints, rules, and principles.
+---
+we were ENGINEERING OUR UI.
 ---
 what about **naming**?
 
@@ -570,9 +578,10 @@ $global-font-sizes: (
 ---
 you get the idea.
 ---
+there are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.
+---
 # BEM (Block - Element - Modifier)
 
-because we needed to reach an agreement:
 how to name things?
 
 ```notes
@@ -625,7 +634,7 @@ Utilities (.u-)
 
 .o-media__image { margin-right: $global-spacing-unit; }
 
-.o-media--large { margin-right: $global-spacing-unit-large; }
+.o-media--large .o-media__image { margin-right: $global-spacing-unit-large; }
 ```
 
 ```notes
