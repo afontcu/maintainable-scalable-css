@@ -49,18 +49,7 @@ Webmaster at Calidae
 ---
 what happened with CSS?
 ---
-it was ~2008.
-
-it all started with CSS Zen Garden.
-```notes
-Demostraba que podiamos crear miles de versiones de una misma web sin tocar
-una sola linea de HTML. Y eso era bueno. Estabamos "separando responsabilidades"
-porque esto es lo que hay que hacer, no? Separar responsabilidades.
-
-HTML = contenido y estructura.
-
-CSS = estilo.
-```
+CSS Zen Garden happened
 ---
 <Image src='images/css-zen-garden.png' />
 ---
@@ -79,139 +68,19 @@ Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo)
 Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
 ```
 ---
-export default Invert
-
-"It is a feature!"
+<Image src='images/css-for-babies.png' />
 ---
-export default Invert
-
 "HTML is entirely decoupled from the CSS!"
+
+"Separation of Concerns! wow amaze engineers!"
 ---
-export default Invert
-
-"This is what CSS should look like!
-
-We are using <strong>The Cascade™</strong>"
-
-```notes
-Estabamos escribiendo CSS bien? No se, por el contexto pareciera que sí.
-
-Estabamos escribiendo CSS reaprovechable? Nah. Nuestro CSS dependía al 100%
-de nuestro HTML. Si el objetivo era separar responsabilidades, lo estabamos
-haciendo mal.
-```
+separation of _what_?
 ---
-we knew about this thing called "Separation of Concerns"
----
-HTML for layout
+HTML to create a layout
 
-CSS for styles
----
-# Standard good practices
-
-Don't Repeat Yourself (DRY)
-
-Single Responsibility Principle (SRP)
-
-Principle of Least Astonishment (POLA)
-
-...
-```notes
-"If a necessary feature has a high astonishment factor, it may be necessary to 
-redesign the feature"
-
-"People are part of the system. The design should match the user's experience, 
-expectations, and mental models."
-```
----
-POLA (not) in action
-```css
-.qbutton.green {
-  background-color: turquoise;
-}
-```
----
-POLA (not) in action
-```css
-.home.column a.product.class300 {
-  width: 300px;
-  margin-left: 20px;
-}
-
-.home.column a.product.class400 {
-  width: 450px;
-  margin-left: 60px;
-}
-```
----
-we didn't quite get them.
----
-# Enter Sass
-
-with great power comes great responsibility.
----
-what does having great powers with no good practices looks like?
----
-<Image src='images/nesting-hell.png' />
----
-```css
-body.product .content-body-wrapper.tabs-block .switch 
-.offer  section.accommodation .content-width 
-.accommodation .select-accommodation-box .list .map {   
-  width: 100%; height: 300px; }
-
-body.product .content-body-wrapper.tabs-block .switch .offer 
-section.accommodation .content-width .accommodation 
-.select-accommodation-box  .list .list-content .items 
-.accommodation-info #formAccomodation 
-.accommodation-form .mealplan .select-price input {
-  display: inline-block; }
-```
----
-<Image src='images/inception.png' />
----
-export default Invert
-
-> The worst part about front-end development was that the other people solving your problems were front-end developers.
-
-[Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/)
-
-```notes
-Por suerte, gente muy inteligente ha estado pensando en como escalar nuestras
-interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
-```
----
-anyway, principles.
----
-a long time ago, we decided this one was cool:
-
-**"Separation of Concerns"**
----
-HTML for layout
-
-CSS for styling
----
-# Content-semantic classes
-
-_(a.k.a. classes must have "meaning")_
-
-```jsx
-<div class="remove-product">
-  <h1>Remove the product</h1>
-  <div>
-    <img src="" alt="" />
-    <p>This action cannot be undone.</p>
-  </div>
-  <div>
-    <button class="remove">Yes</button>
-    <button>Cancel</button>
-  </div>
-</div>
-```
+CSS to style it
 ---
 <Image src="images/remove-the-product.png" />
----
-wow such meaning
 ---
 ```jsx
 <div class="remove-product">
@@ -246,16 +115,113 @@ wow such meaning
 Y este sería el CSS resultante.
 ```
 ---
-separation of _what?_
+lol separation of concerns.
 
 ```notes
-.remove-product?
+es como que jugabamos a ser ingenieros de software
+```
+---
+Don't Repeat Yourself (DRY)
 
-"Separation of Concerns"? Nuestro CSS está totalmente ligado a nuestro HTML.
-No puedes editar uno sin editar el otro.
+Single Responsibility Principle (SRP)
+
+Principle of Least Astonishment (POLA)
+
+```notes
+Esto sabiamos que existia, pero que mas da? 
+
+Quieres ver un buen Principle of Least Astonishment?
+```
+---
+```css
+.qbutton.green {
+  background-color: turquoise;
+}
+```
+---
+```css
+.home.column a.product.class300 {
+  width: 300px;
+  margin-left: 20px;
+}
+```
+```css
+.home.column a.product.class400 {
+  width: 450px; /* WTF */
+  margin-left: 60px;
+}
+```
+---
+<Image src="images/css-meme.jpg" />
+
+```notes
+in software enginneering, we've always known what is "good" and "wrong".
+in css we didn't.
+
+y ademas le añadiamos Scss. Eramos como cabras locas.
+
+Habeis visto nunca una cabra loca? Yo tampoco pero tiene que ser la leche,
+porque si ya parece que estan locas cuando no lo estan... en fin.
+```
+---
+<img src='images/nesting-hell.png' />
+---
+```css
+body.product .content-body-wrapper.tabs-block .switch 
+.offer  section.accommodation .content-width 
+.accommodation .select-accommodation-box .list .map {   
+  width: 100%; height: 300px; }
+
+body.product .content-body-wrapper.tabs-block .switch .offer 
+section.accommodation .content-width .accommodation 
+.select-accommodation-box  .list .list-content .items 
+.accommodation-info #formAccomodation 
+.accommodation-form .mealplan .select-price input {
+  display: inline-block; }
+```
+---
+<Image src='images/inception.png' />
+---
+export default Invert
+
+> The worst part about front-end development was that the other people solving your problems were front-end developers.
+
+[Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/)
+
+```notes
+Por suerte, gente muy inteligente ha estado pensando en como escalar nuestras
+interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
+```
+---
+Visual CSS
+---
+```jsx
+<div class="remove-product">
+  <h1>Remove the product</h1>
+  <div>
+    <img src="" alt="" />
+    <p>This action cannot be undone.</p>
+  </div>
+  <div>
+    <button class="remove">Yes</button>
+    <button>Cancel</button>
+  </div>
+</div>
+```
+
+```notes
+buenas intenciones sí teníamos. al fin y al cabo, queriamos separar responsabilidades,
+lo que no lo conseguimos del todo.
+
+al final nos dimos cuenta que lo que queriamos era poder reutilizar el CSS.
+
+teniamos la sensacion de estar escribiendo uuuna y otra vez las mismas cosas
+pero con nombres distintos (incluso entre proyectos).
 ```
 ---
 content-semantic class names is not a good idea.
+
+(if you want to reuse your CSS)
 
 ```notes
 Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
@@ -267,31 +233,29 @@ No puedes reutilizar el propósito de una pieza si este propósito está ligado
 al contenido. 
 ```
 ---
-we need to decouple CSS from HTML.
+from this...
+
+```jsx
+<div class="remove-product">
+  <h1>Remove the product</h1>
+  <div>
+    <img src="" alt="" />
+    <p>This action cannot be undone.</p>
+  </div>
+  <div>
+    <button class="remove">Yes</button>
+    <button>Cancel</button>
+  </div>
+</div>
+```
 
 ```notes
 Primer paso para desacoplar: usar clases como hooks en lugar de puros elementos.
 Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 ```
 ---
-why?
----
-<Image src="images/2-modals.png" />
 
-```notes
-Ahora que?
-
-1. Cosas a sobreescribir: en este caso no, pero es sencillo imaginar un modal
-con un footer un poco más alto, de un color distinto, o una cabecera con una
-imagen. Quién sabe.
-
-2. Duplicar estilos. Aunque solo sea añadiendo los nuevos selectores con los 
-viejos (usando una coma), al final estamos duplicando esos estilos en varios 
-selectors. Muy bien el "don't repeat yourself".
-```
----
-what if...
----
+...to this
 ```jsx
 <div class="modal">
   <h1 class="modal-title">...</h1>
@@ -307,23 +271,34 @@ what if...
 ```
 
 ```notes
-DRY? Bueno, ahora nos repetimos en el HTML. Va a haber tantas clases ".modal"
-como modals en la aplicación.
+Vale, han pasado un monton de cosas.
 
-Esto puede parecer super lógico, sobretodo si tienes la suerte de haber
-"llegado" al CSS en los últimos tiempos. Pero no partíamos de aquí. No 
-partíamos de crear CSS reusable: nuestro objetivo era crear "clases semánticas".
+1. lo mas visible: hay un monton de clases. Por que? porque asi nos liberamos
+de la estructura concreta de HTML. Usamos clases como "hook" para estilos, no elementos.
+
+2. ahora hemos llamado a nuestro elemento "modal". Ojo que esto es mas importante
+de lo que parece. "modal" no habla del propósito de nuestro codigo (de hecho, 
+con este ejemplo no sabes para qué va a servir el modal. y eso es bueno). habla
+de como luce, del aspecto de nuestro elemento. 
+
+Por eso lo llamamos "Visual CSS"
+
+Y puede parecer suuuuper evidente a dia de hoy, mas que nada porque este es el
+approach de la mayoria de frameworks (Boostrap, UIkit, etc). Pero no lo era 
+hace un tiempo, y nos habiamos dado bastantes hostias contra la pared por eso.
+```
+---
+but you are repeating yourself. in HTML.
+
+you and your "software principles".
+
+```notes
+Si claro, en alguna parte vas a tener que repetirte.
 
 Llegamos a la conclusión que en alguna parte vas a acabar repitiéndote, quieras
 o no. Pero como queremos conseguir algo reusable, lo ideal seria repetirse en
 HTML, y así poder reaprovechar el CSS en diferentes proyectos.
 ```
----
-# Visual CSS
----
-visual CSS > semantic CSS
----
-relies on classes as a primary hook for styling.
 ---
 what if...
 ---
@@ -344,10 +319,9 @@ what if...
 ```notes
 Volvemos a estar en las mismas. Es el mismo elemento? Podemos seguir reduciento
 nuestros bloques?
-
-Recordemos SRP: nuestros elementos, modulos, clases, whatever, deberían hacer
-una cosa, solamente una, y hacerla bien. Qué tal esto?
 ```
+---
+Single Responsibility Principle in CSS
 ---
 ```scss
 .text-with-icon {}
@@ -356,12 +330,10 @@ una cosa, solamente una, y hacerla bien. Qué tal esto?
 ```scss
 .icon-text {}
 ```
-
 ```notes
-No estabamos inventando nada nuevo. Esto ya existia.
+No estabamos inventando nada nuevo. 
 
-Tanto el concepto de "CSS visual" como la metáfora concreta de "icon-text" o 
-cómo quieras llamarlo.
+La metáfora concreta de "icon-text" o cómo quieras llamarlo ya existía
 ```
 ---
 export default Invert
@@ -369,6 +341,10 @@ export default Invert
 > The **media object** is an image to the left, with descriptive content to the right.
 
 [Nicole Sullivan](http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/)
+
+```notes
+Nicole Sullivan es la creadora del concepto OOCSS, Object-oriented CSS.
+```
 ---
 <img src="images/media-object.png" />
 ---
@@ -403,6 +379,20 @@ export default Invert
   </div>
 </div>
 ```
+
+```notes
+Aqui vemos tambien algo interesante. Este alert que enseñábamos antes
+esta formado por un media y por las propias clases del alert.
+
+Software Principle: prefer Composition over Inheritance.
+```
+---
+```jsx
+<div class="media alert">
+  <img class="media-img" />
+  <p class="media-body alert-content">Changes saved successfully</p>
+</div>
+```
 ---
 our building blocks (css classes) were now reusable across projects.
 
@@ -428,6 +418,13 @@ we were not building pages anymore.
 we were building components of a system.
 ---
 from **styling pages** to creating **design systems**.
+---
+SENIOR DESIGN SYSTEM ENGINEER
+
+```notes
+Esto lo pones en LinkedIn y tienes que ir a vivirte a una isla desierta para
+que dejen de llegarte mensajes. Y aun así.
+```
 ---
 # Design systems
 
@@ -470,6 +467,8 @@ Funcionaria exactamente igual usando javascript.
 
 Tendríamos nuestro theme.js o lo que sea, y allí crearíamos los valores
 válidos para nuestro sistema.
+
+Software Principle: Magic Numbers
 ```
 ---
 styles based on systems became harmonious.
