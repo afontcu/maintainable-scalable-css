@@ -324,6 +324,9 @@ what if...
 ```notes
 Volvemos a estar en las mismas. Es el mismo elemento? Podemos seguir reduciendo
 nuestros bloques?
+
+The more a component does, or the more specific a component is, the harder it 
+is to reuse.
 ```
 ---
 Single Responsibility Principle in CSS
@@ -670,8 +673,12 @@ death by repetition
   margin-right: $global-spacing-unit-large; }
 ```
 ```scss
-.c-header--spaced {
-  margin-right: $global-spacing-unit-large; }
+.actions-list__item {
+  margin-right: $global-spacing-unit-large;;
+  &:last-child {
+    margin-right: 0;
+  }
+}
 ```
 
 ```notes
