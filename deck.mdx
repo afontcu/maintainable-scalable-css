@@ -1,4 +1,5 @@
 export { default as theme } from './theme'
+
 import { FullScreenCode } from 'mdx-deck/layouts'
 import { Head } from 'mdx-deck'
 import { Appear } from 'mdx-deck'
@@ -50,7 +51,71 @@ Webmaster at Calidae
 ---
 <img src="/images/sponsors.png" />
 ---
-what happened with CSS?
+export default Invert
+
+# Chapter 1
+---
+wat CSS
+
+
+```notes
+inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
+```
+---
+```css
+.qbutton.green {
+  background-color: turquoise;
+}
+```
+---
+[WAT GIF]
+---
+```css
+.home.column a.product.class300 {
+  width: 300px;
+  margin-left: 20px;
+}
+```
+```css
+.home.column a.product.class400 {
+  width: 450px; /* WTF */
+  margin-left: 60px;
+}
+```
+---
+[WAT GIF]
+---
+<img src='images/nesting-hell.png' />
+```notes
+y ademas le añadiamos Scss. Eramos como cabras locas.
+
+Habeis visto nunca una cabra loca? Yo tampoco pero tiene que ser la leche,
+porque si ya parece que estan locas cuando no lo estan... en fin.
+```
+---
+```css
+body.product .content-body-wrapper.tabs-block .switch 
+.offer section.accommodation .content-width 
+.accommodation .select-accommodation-box .list .map {   
+  width: 100%; height: 300px; }
+
+body.product .content-body-wrapper.tabs-block .switch .offer 
+section.accommodation .content-width .accommodation 
+.select-accommodation-box .list .list-content .items 
+.accommodation-info #formAccomodation 
+.accommodation-form .mealplan .select-price input {
+  display: inline-block; }
+```
+---
+[WAT GIF]
+---
+<Image src='images/inception.png' />
+---
+wat happened, CSS?
+
+```notes
+que facil...
+```
 ---
 CSS Zen Garden happened
 ---
@@ -64,24 +129,34 @@ CSS Zen Garden happened
 }
 ```
 ```notes
-(es gracios perque els links son display inline per defecte)
+(es gracioso porque los links son inline por defecto)
 
 Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo)
 
 Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
 ```
 ---
-"HTML is entirely decoupled from the CSS!"
----
-"Separation of Concerns! wow amaze engineers!"
----
 <Image src='images/css-for-babies.png' />
----
-separation of _what_?
----
-HTML to create a layout
 
-CSS to style it
+```notes
+Estábamos tan seguros que hasta le enseñabamos CSS así a los niños. Mirad que
+mierda de código.
+```
+---
+"we are using separation of concerns"
+
+```notes
+"SoC" porque por un lado teniamos el HTML definiendo el layout, y por otro
+el CSS dando estilos
+```
+---
+separation of _wat_?
+---
+[WAT GIF]
+
+```notes
+Va, ya basta
+```
 ---
 <Image src="images/remove-the-product.png" />
 ---
@@ -115,7 +190,7 @@ CSS to style it
 ```
 
 ```notes
-Y este sería el CSS resultante.
+Y este era CSS que escribiamos.
 ```
 ---
 lol separation of concerns.
@@ -138,54 +213,12 @@ Esto sabiamos que existia, pero que mas da?
 Quieres ver un buen Principle of Least Astonishment?
 ```
 ---
-```css
-.qbutton.green {
-  background-color: turquoise;
-}
-```
----
-```css
-.home.column a.product.class300 {
-  width: 300px;
-  margin-left: 20px;
-}
-```
-```css
-.home.column a.product.class400 {
-  width: 450px; /* WTF */
-  margin-left: 60px;
-}
-```
----
 <Image src="images/css-meme.jpg" />
 
 ```notes
 in software enginneering, we've always known what is "good" and "wrong".
 in css we didn't.
-
-y ademas le añadiamos Scss. Eramos como cabras locas.
-
-Habeis visto nunca una cabra loca? Yo tampoco pero tiene que ser la leche,
-porque si ya parece que estan locas cuando no lo estan... en fin.
 ```
----
-<img src='images/nesting-hell.png' />
----
-```css
-body.product .content-body-wrapper.tabs-block .switch 
-.offer  section.accommodation .content-width 
-.accommodation .select-accommodation-box .list .map {   
-  width: 100%; height: 300px; }
-
-body.product .content-body-wrapper.tabs-block .switch .offer 
-section.accommodation .content-width .accommodation 
-.select-accommodation-box  .list .list-content .items 
-.accommodation-info #formAccomodation 
-.accommodation-form .mealplan .select-price input {
-  display: inline-block; }
-```
----
-<Image src='images/inception.png' />
 ---
 export default Invert
 
@@ -893,6 +926,8 @@ What questions do you have?
 (ask me anyting: @afontcu_ on Twitter)
 ---
 # References
+
+[Wat - Gary Bernhardt](https://www.destroyallsoftware.com/talks/wat)
   
 [CSS and scalability - Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/) 
 
