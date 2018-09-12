@@ -5,10 +5,12 @@ import scss from 'react-syntax-highlighter/languages/prism/scss'
 const monospace =
   'SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace'
 
+const font = 'Satisfy, serif'
+
 export default {
   ...theme,
   monospace,
-  font: 'Satisfy, serif',
+  font,
   prism: {
     style,
     languages: {
