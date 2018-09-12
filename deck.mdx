@@ -11,7 +11,9 @@ import { Invert } from 'mdx-deck/layouts'
 </Head>
 
 
+
 ---
+
 according to most neuroscience studies, people's number one fear is **public speaking**.
 
 number two is **death**.
@@ -21,46 +23,66 @@ Esto significa dos cosas:
 1) La primera, que en un entierro la gente prefiere estar en el ataúd que dando el réquiem
 2) La segunda, que estoy venciendo a la muerte.
 ```
+
 ---
+
 <Image src="images/death.png" />
+
 ---
+
 # The bumpy road to a
 # maintainable, scalable CSS
 From the trenches
 
+
 ---
+
 # Adrià Fontcuberta
 SW Engineer at Calidae
 
 @afontcu_
+
 ---
+
 # Adrià Fontcuberta
 Frontend Dev at Calidae
 
 @afontcu_
+
 ---
+
 # Adrià Fontcuberta
 UI Engineer at Calidae
 
 @afontcu_
+
 ---
+
 # Adrià Fontcuberta
 Webmaster at Calidae
 
 @afontcu_
+
 ---
+
 <img src="/images/sponsors.png" />
+
 ---
+
 export default Invert
 
 # Chapter 1
+
 ---
+
 <Image src="images/twitter-poll.png" />
 
 ```notes
 Link: https://twitter.com/mxstbr/status/1038073603311448064
 ```
+
 ---
+
 <img src="images/twitter-poll-results.png" />
 ```notes
 El primer problema con CSS es que nunca nos habiamos parado a entender qué estaba 
@@ -84,23 +106,33 @@ No que sea fácil o dificil, sino la expectativa de "esto tiene que ser facil".
 
 Y cuál es la consecuencia de estas dos cosas?
 ```
+
 ---
+
 <img src="images/no.gif" width="1000px" />
+
 ---
+
 wat CSS
 
 ```notes
 inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 ```
+
 ---
+
 ```css
 .qbutton.green {
   background-color: turquoise;
 }
 ```
+
 ---
+
 [WAT GIF]
+
 ---
+
 ```css
 .home.column a.product.class300 {
   width: 300px;
@@ -113,15 +145,21 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
   margin-left: 60px;
 }
 ```
+
 ---
+
 [WAT GIF]
+
 ---
+
 <img src='images/nesting-hell.png' />
 
 ```notes
 y ademas le añadiamos Sass. El desastre estaba asegurado.
 ```
+
 ---
+
 ```css
 body.product .content-body-wrapper.tabs-block .switch 
 .offer section.accommodation .content-width 
@@ -135,23 +173,37 @@ section.accommodation .content-width .accommodation
 .accommodation-form .mealplan .select-price input {
   display: inline-block; }
 ```
+
 ---
+
 [WAT GIF]
+
 ---
+
 <Image src='images/inception.png' />
+
 ---
+
 wat happened, CSS?
 
 ```notes
 que facil...
 ```
+
 ---
+
 CSS Zen Garden happened
+
 ---
+
 <img src='images/css-zen-garden.png' />
+
 ---
+
 <img src='images/css-zen-garden-2.png' />
+
 ---
+
 ```css
 .sidebar .design-selection nav ul li a {
   display: inline;
@@ -164,31 +216,43 @@ Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo)
 
 Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
 ```
+
 ---
+
 <Image src='images/css-for-babies.png' />
 
 ```notes
 Estábamos tan seguros que hasta le enseñabamos CSS así a los niños. Mirad que
 mierda de código.
 ```
+
 ---
+
 "we are using separation of concerns"
 
 ```notes
 "SoC" porque por un lado teniamos el HTML definiendo el layout, y por otro
 el CSS dando estilos
 ```
+
 ---
+
 separation of _wat_?
+
 ---
+
 [WAT GIF]
 
 ```notes
 Va, ya basta
 ```
+
 ---
+
 <Image src="images/remove-the-product.png" />
+
 ---
+
 ```jsx
 <div class="remove-product">
   <h1>Remove the product</h1>
@@ -202,7 +266,9 @@ Va, ya basta
   </div>
 </div>
 ```
+
 ---
+
 ```scss
 .remove-product {
   > h1 { ... }
@@ -221,9 +287,13 @@ Va, ya basta
 ```notes
 Y este era CSS que escribiamos.
 ```
+
 ---
+
 "separation of concerns"
+
 ---
+
 The "P" in CSS stands for "Principles"
 
 ```notes
@@ -231,9 +301,13 @@ es como que jugabamos a ser ingenieros de software, pero con pretenciones
 
 "este principio me gusta, voy a usarlo. este no, pues no lo uso"
 ```
+
 ---
+
 <img src="images/css-meme.jpg" />
+
 ---
+
 Don't Repeat Yourself (DRY)
 
 Single Responsibility Principle (SRP)
@@ -245,7 +319,9 @@ Esto sabiamos que existia, pero que mas da?
 
 Quieres ver un buen Principle of Least Astonishment?
 ```
+
 ---
+
 export default Invert
 
 > The worst part about front-end development was that the other people solving your problems were front-end developers.
@@ -256,7 +332,9 @@ export default Invert
 Por suerte, gente muy inteligente ha estado pensando en como escalar nuestras
 interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
 ```
+
 ---
+
 ```jsx
 <div class="remove-product">
   <h1>Remove the product</h1>
@@ -280,7 +358,9 @@ al final nos dimos cuenta que lo que queriamos era poder reutilizar el CSS.
 teniamos la sensacion de estar escribiendo uuuna y otra vez las mismas cosas
 pero con nombres distintos (incluso entre proyectos).
 ```
+
 ---
+
 content-semantic class names is not a good idea.
 
 (if you want to reuse your CSS)
@@ -294,11 +374,15 @@ Piensas: "ah mira, una 2x2 gris claro". Puedes hacer lo que quieras con ella.
 No puedes reutilizar el propósito de una pieza si este propósito está ligado
 al contenido. 
 ```
+
 ---
+
 export default Invert
 
 # Chapter 2
+
 ---
+
 from this...
 
 ```jsx
@@ -319,7 +403,9 @@ from this...
 Primer paso para desacoplar: usar clases como hooks en lugar de puros elementos.
 Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 ```
+
 ---
+
 
 ...to this
 ```jsx
@@ -353,7 +439,9 @@ Y puede parecer suuuuper evidente a dia de hoy, mas que nada porque este es el
 approach de la mayoria de frameworks (Boostrap, UIkit, etc). Pero no lo era 
 hace un tiempo, y nos habiamos dado bastantes hostias contra la pared por eso.
 ```
+
 ---
+
 but you are repeating yourself. in HTML.
 
 _you and your "software principles"_
@@ -365,11 +453,17 @@ Llegamos a la conclusión que en alguna parte vas a acabar repitiéndote, quiera
 o no. Pero como queremos conseguir algo reusable, lo ideal seria repetirse en
 HTML, y así poder reaprovechar el CSS en diferentes proyectos.
 ```
+
 ---
+
 what if...
+
 ---
+
 <Image src="images/modal-alert.png" />
+
 ---
+
 ```scss
 .modal-messages {
   .modal-icon { ... }
@@ -389,13 +483,19 @@ nuestros bloques?
 The more a component does, or the more specific a component is, the harder it 
 is to reuse.
 ```
+
 ---
+
 Single Responsibility Principle in CSS
+
 ---
+
 ```scss
 .text-with-icon {}
 ```
+
 ---
+
 ```scss
 .icon-text {}
 ```
@@ -404,7 +504,9 @@ No estabamos inventando nada nuevo.
 
 La metáfora concreta de "icon-text" o cómo quieras llamarlo ya existía
 ```
+
 ---
+
 export default Invert
 
 > The **media object** is an image to the left, with descriptive content to the right.
@@ -414,13 +516,21 @@ export default Invert
 ```notes
 Nicole Sullivan es la creadora del concepto OOCSS, Object-oriented CSS.
 ```
+
 ---
+
 <img src="images/media-object.png" />
+
 ---
+
 <Image src="images/media-object-facebook.png" />
+
 ---
+
 <Image src="images/modal-alert.png" />
+
 ---
+
 ```jsx
 <div class="modal">
   <h1 class="modal-title">...</h1>
@@ -434,7 +544,9 @@ Nicole Sullivan es la creadora del concepto OOCSS, Object-oriented CSS.
   </div>
 </div>
 ```
+
 ---
+
 ```jsx
 <div class="modal">
   <h1 class="modal-title">...</h1>
@@ -455,23 +567,31 @@ esta formado por un media y por las propias clases del alert.
 
 Software Principle: prefer Composition over Inheritance.
 ```
+
 ---
+
 ```jsx
 <div class="media alert">
   <img class="media-img" />
   <p class="media-body alert-content">Changes saved successfully</p>
 </div>
 ```
+
 ---
+
 our building blocks (css classes) were now reusable across projects.
 
 ```notes
 En nuestro contexto, es lo máximo a lo que podemos aspirar. Agencia digital
 con varios proyectos, diferentes necesidades, contextos, equipos...
 ```
+
 ---
+
 a modal? nah.
+
 ---
+
 a component made of components.
 
 **modal** = media + button + card + ...
@@ -481,20 +601,28 @@ Nos dimos cuenta de algo importante. Hacia falta que estos componentes pequeños
 tuvieran consistencia entre ellos. Además, habia cambiado como veíamos nuestras
 aplicaciones.
 ```
+
 ---
+
 we were not building pages anymore.
 
 we were building components of a system.
+
 ---
+
 from **styling pages** to creating **design systems**.
+
 ---
+
 SENIOR DESIGN SYSTEM ENGINEER
 
 ```notes
 Esto lo pones en LinkedIn y tienes que ir a vivirte a una isla desierta para
 que dejen de llegarte mensajes. Y aun así.
 ```
+
 ---
+
 # Design systems
 
 Rules
@@ -502,13 +630,17 @@ Rules
 Constraints
 
 Principles
+
 ---
+
 **Rules**: Spacing values must be proportional.
 
 **Constraints**: Only 5 spacing values available.
 
 **Principles**: Spacing should help establish relationship between elementos.
+
 ---
+
 ```scss
 $baseline: 6px;
 ```
@@ -520,7 +652,9 @@ $unit-factor:        4;
 $unit-factor-large:  8;
 $unit-factor-huge:  16;
 ```
+
 ---
+
 results in
 
 ```scss
@@ -539,9 +673,13 @@ válidos para nuestro sistema.
 
 Software Principle: Magic Numbers
 ```
+
 ---
+
 styles based on systems became harmonious.
+
 ---
+
 ```scss
 $global-font-sizes: (
   h1: 32px,
@@ -552,7 +690,9 @@ $global-font-sizes: (
   h6: 16px
 );
 ```
+
 ---
+
 ```scss
 $global-colors: (
   "branding-primary": #fabada,
@@ -565,22 +705,32 @@ Esto ya lo podiamos haber hecho antes, con el CSS semántico. Seguramente si.
 Pero es una evolucion, porque en ese momento ni se nos ocurrió que esto pudiera
 tener algún valor. 
 ```
+
 ---
+
 we had the right pieces.
 
 components as building blocks, using constraints, rules, and principles.
+
 ---
+
 we were ENGINEERING OUR UI.
+
 ---
+
 what about **naming**?
 
 what about **file structure**?
+
 ---
+
 # ITCSS + BEM
 Inverted Triangle CSS (by [Harry Roberts](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528))
 
 Block Element Modifier (by Yandex)
+
 ---
+
 ## Why "inverted triangle"?
 
 from global to local.
@@ -588,9 +738,13 @@ from global to local.
 from generic to concrete.
 
 from low specificity to high specificity.
+
 ---
+
 <Image src="images/itcss.png" />
+
 ---
+
 ```bash
 1-Settings/
     _colors.scss
@@ -607,7 +761,9 @@ from low specificity to high specificity.
 7-Utilities/
     _hidden.scss
 ```
+
 ---
+
 /scss/1-Settings/_core.scss
 
 ```scss
@@ -619,7 +775,9 @@ $unit-factor:        4;
 $unit-factor-large:  8;
 $unit-factor-huge:  16;
 ```
+
 ---
+
 /scss/1-Settings/_font-sizing.scss
 
 ```scss
@@ -632,7 +790,9 @@ $global-font-sizes: (
   h6: 16px
 );
 ```
+
 ---
+
 /scss/6-Components/_modal.scss
 
 ```scss
@@ -644,11 +804,17 @@ $global-font-sizes: (
   ...
 }
 ```
+
 ---
+
 you get the idea.
+
 ---
+
 there are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.
+
 ---
+
 # BEM (Block - Element - Modifier)
 
 how to name things?
@@ -663,7 +829,9 @@ que nos podemos encontrar con eso, no?
 Necesitabamos una nomenclatura que nos permitiera establecer las relaciones
 Y EL ENCAPSULAMIENTO que no nos ofrece el lenguaje out of the box (de momento).
 ```
+
 ---
+
 ```css
 .block {}
 
@@ -674,7 +842,9 @@ Y EL ENCAPSULAMIENTO que no nos ofrece el lenguaje out of the box (de momento).
 ```scss
 .block__element--modifier {}
 ```
+
 ---
+
 ```css
 .person {}
 
@@ -685,7 +855,9 @@ Y EL ENCAPSULAMIENTO que no nos ofrece el lenguaje out of the box (de momento).
 ```scss
 .person__eyes--blue {}
 ```
+
 ---
+
 # Namespaces
 
 Objects (.o-)
@@ -693,7 +865,9 @@ Objects (.o-)
 Components (.c-)
 
 Utilities (.u-)
+
 ---
+
 /scss/5-Objects/_objects.media.scss
 
 ```scss
@@ -711,18 +885,26 @@ Esta es nuestra "forma final", como escribimos CSS ahora mismo cuando tenemos
 que crear un componente. Es algo diferente si usamos estos principios sobre
 un framework JS (no namespaces en componentes).
 ```
+
 ---
+
 it looks weird.
 
 ```notes
 pero con el tiempo BEM te seduce, con su coherencia y su forma de encapsular 
 las clases.
 ```
+
 ---
+
 <img src="images/antonio.png" />
+
 ---
+
 what if...
+
 ---
+
 death by repetition
 
 ```scss
@@ -747,7 +929,9 @@ Observamos que nos pasaba esto. Creábamos modifiers usando el SRP, pero no
 podiamos evitar repetirnos. Teniamos decenas de clases haciendo exactamente
 lo mismo, era el naming y nuestras convenciones lo que nos impedía reaprovechar
 ```
+
 ---
+
 death by modifiers
 ```jsx
 <nav class="c-nav c-nav--large c-nav--primary-color c-nav--boxed
@@ -769,13 +953,17 @@ de la suerte.
 Y si empezamos creando elementos con utilidades, y creamos los componentes
 cuando los vamos necesitando, y no antes?
 ```
+
 ---
+
 ```scss
 .u-margin-right-large {
   margin-right: $global-spacing-unit-large !important;
 }
 ```
+
 ---
+
 Flexbox utilities
 
 Padding and margin utilities
@@ -783,7 +971,9 @@ Padding and margin utilities
 Width and height utilities
 
 Text sizes, colors, styles and weights
+
 ---
+
 # Chapter 3
 
 Utility-first CSS
@@ -798,17 +988,25 @@ o lenguaje para construir aplicaciones.
 
 Así evitamos abstracciones prematuras.
 ```
+
 ---
+
 export default Invert
 
 > The best way of writing great CSS is **to avoid writing CSS**.
 
 Me
+
 ---
+
 create a lot of small, reusable, focused CSS classes, and use them to build your UI.
+
 ---
+
 <Image src="images/remove-the-product.png" />
+
 ---
+
 ```jsx
 // Modal.js (o Modal.vue, o...)
 
@@ -834,9 +1032,13 @@ Creamos componentes cuando y donde hace falta.
 No cada elemento hijo de modal tiene su clase equivalente. Si no hace falta, 
 no la escribimos.
 ```
+
 ---
+
 <Image src="images/wat.gif" />
+
 ---
+
 ```jsx
 // Modal.js (o Modal.vue, o...)
 
@@ -855,7 +1057,9 @@ no la escribimos.
   </div>
 </div>
 ```
+
 ---
+
 ```jsx
 <nav className="c-nav u-padding-horizontal u-padding-vertical-tiny
                 u-color-primary u-margin-right-large
@@ -884,7 +1088,9 @@ Y el componente NavItem? Sólo hay uno...si lo encapsulamos en un componente.
 Este es el beneficio principal de utility-first. Abstracciones cuando las
 necesitas, no antes. Por eso "-first", y no "-only".
 ```
+
 ---
+
 ```jsx
 // Nav.js
 
@@ -904,12 +1110,18 @@ export default () => (
                   u-color-black u-margin-left-huge">...</li>
 )
 ```
+
 ---
+
 it is possible to build a whole new component without writing 
 **a single line of CSS**.
+
 ---
+
 "a lot of things happened in 40 minutes"
+
 ---
+
 # Normandy CSS
 Scss + ITCSS + BEM + Namespaces
 
@@ -921,17 +1133,25 @@ usando, creo firmemente que hay muchos casos de uso resueltos con una buena
 estructura inicial de CSS, sin necesitar una librería entera predefinida como
 Boostrap o demás.
 ```
+
 ---
+
 # Next steps
+
 ---
+
 constraints over conventions.
+
 ---
+
 JS + CSS = 💖?
 
 ```notes
 CSS-in-JS solutions (styled components, spectacle, etc)
 ```
+
 ---
+
 Shadow DOM
 
 ```notes
@@ -942,7 +1162,9 @@ leak out and page styles don't bleed in.
 
 Forget naming conflicts! No need for namespaces! Byebye BEM!
 ```
+
 ---
+
 # (Our) Learnings
 
 <ul>
@@ -960,14 +1182,18 @@ Atomic CSS es un buen "approach" para pensar en componentes y olvidar el concept
 de diseñar/programar páginas. Contar con el apoyo del diseñador va a ser bastante
 útil, porque este mindset puede cambiar por completo el flujo de trabajo.
 ```
+
 ---
+
 export default Invert
 
 # Thank you ! 
 What questions do you have?
 
 (ask me anyting: @afontcu_ on Twitter)
+
 ---
+
 # References
 
 [Wat - Gary Bernhardt](https://www.destroyallsoftware.com/talks/wat)
@@ -981,7 +1207,9 @@ What questions do you have?
 [Immutable CSS - Harry Roberts](https://csswizardry.com/2015/03/immutable-css/)
 
 [Object Oriented CSS - Nicole Sullivan](https://github.com/stubbornella/oocss/wiki)
+
 ---
+
 # References
 [In Defense of Utility-First CSS - Sarah Dayan](https://frontstuff.io/in-defense-of-utility-first-css)
 
