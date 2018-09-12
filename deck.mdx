@@ -18,15 +18,19 @@ according to most neuroscience studies, people's number one fear is **public spe
 
 number two is **death**.
 ```notes
-Esto significa dos cosas:
+Esto significa tres cosas:
 
-1) La primera, que en un entierro la gente prefiere estar en el ataúd que dando el réquiem
-2) La segunda, que estoy venciendo a la muerte.
+1) que en un entierro la gente prefiere estar en el ataúd que dando el réquiem
+2) que estoy venciendo a la muerte.
 ```
 
 ---
 
 <Image src="images/death.png" />
+
+```notes
+3) que cualquiera puede inventarse datos y parecen ciertos.
+```
 
 ---
 
@@ -73,6 +77,10 @@ export default Invert
 
 # Chapter 1
 
+```notes
+He dado varias vueltas a como empezar esta charla...
+```
+
 ---
 
 <Image src="images/twitter-poll.png" />
@@ -84,6 +92,7 @@ Link: https://twitter.com/mxstbr/status/1038073603311448064
 ---
 
 <img src="images/twitter-poll-results.png" />
+
 ```notes
 El primer problema con CSS es que nunca nos habiamos parado a entender qué estaba 
 pasando. Escribiamos en un lenguaje del que sabíamos cómo escribirlo, pero no
@@ -123,7 +132,7 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 
 ```css
 .qbutton.green {
-  background-color: turquoise;
+  background-color: red;
 }
 ```
 
@@ -691,8 +700,6 @@ $global-font-sizes: (
 );
 ```
 
----
-
 ```scss
 $global-colors: (
   "branding-primary": #fabada,
@@ -724,10 +731,10 @@ what about **file structure**?
 
 ---
 
-# ITCSS + BEM
-Inverted Triangle CSS (by [Harry Roberts](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528))
+# ITCSS
 
-Block Element Modifier (by Yandex)
+Inverted Triangle CSS (by Harry Roberts)
+
 
 ---
 
@@ -793,16 +800,25 @@ $global-font-sizes: (
 
 ---
 
+/scss/5-Objects/_media.scss
+
+```scss
+.media { ... }
+
+.media-img { ... }
+
+.media-body { ... }
+```
+
+
+---
+
 /scss/6-Components/_modal.scss
 
 ```scss
-.modal {
-  ...
-}
+.modal { ... }
 
-.modal-buttons {
-  ...
-}
+.modal-buttons { ... }
 ```
 
 ---
@@ -815,9 +831,9 @@ there are 2 hard problems in computer science: cache invalidation, naming things
 
 ---
 
-# BEM (Block - Element - Modifier)
+# BEM
 
-how to name things?
+(Block - Element - Modifier)
 
 ```notes
 por ejemplo, un Media Object tiene varias partes. La imagen, el body.
@@ -905,6 +921,30 @@ what if...
 
 ---
 
+death by modifiers
+```jsx
+<nav class="c-nav c-nav--large c-nav--primary-color c-nav--boxed
+            c-nav--rounded c-nav--full-width">
+    <ul class="c-nav__list u-nav__list--unpadded
+               c-nav__list--spaced-bottom">
+      <li class="c-nav__item c-nav__item--boxed c-nav__item--black
+                 c-nav__item--padded-bottom c-nav__item--huge">
+      </li>
+    </ul>
+</nav>
+```
+
+```notes
+es casi como si un niño pequeño hubiera dado cabezazos a un teclado, o como si
+un alemán borracho hubiera decidido crear un nuevo idioma a partir de la ruleta
+de la suerte.
+
+Y si empezamos creando elementos con utilidades, y creamos los componentes
+cuando los vamos necesitando, y no antes?
+```
+
+---
+
 death by repetition
 
 ```scss
@@ -932,30 +972,6 @@ lo mismo, era el naming y nuestras convenciones lo que nos impedía reaprovechar
 
 ---
 
-death by modifiers
-```jsx
-<nav class="c-nav c-nav--large c-nav--primary-color c-nav--boxed
-            c-nav--rounded c-nav--full-width">
-    <ul class="c-nav__list u-nav__list--unpadded
-               c-nav__list--spaced-bottom">
-      <li class="c-nav__item c-nav__item--boxed c-nav__item--black
-                 c-nav__item--padded-bottom c-nav__item--huge">
-      </li>
-    </ul>
-</nav>
-```
-
-```notes
-es casi como si un niño pequeño hubiera dado cabezazos a un teclado, o como si
-un alemán borracho hubiera decidido crear un nuevo idioma a partir de la ruleta
-de la suerte.
-
-Y si empezamos creando elementos con utilidades, y creamos los componentes
-cuando los vamos necesitando, y no antes?
-```
-
----
-
 ```scss
 .u-margin-right-large {
   margin-right: $global-spacing-unit-large !important;
@@ -973,10 +989,14 @@ Width and height utilities
 Text sizes, colors, styles and weights
 
 ---
+export default Invert
 
 # Chapter 3
 
-Utility-first CSS
+---
+
+utility-first CSS.
+
 
 ```notes
 "first" significa que empezamos usando los bloques "Legos" más pequeños.
@@ -1061,11 +1081,10 @@ no la escribimos.
 ---
 
 ```jsx
-<nav className="c-nav u-padding-horizontal u-padding-vertical-tiny
-                u-color-primary u-margin-right-large
-                u-radius-circle u-width-100">
-    <ul class="c-nav__list u-nav__list--unpadded
-               c-nav__list--spaced-bottom">
+<nav class="c-nav u-padding-horizontal u-padding-vertical-tiny
+            u-color-primary u-margin-right-large
+            u-radius-circle u-width-100">
+    <ul class="c-nav__list u-nav__list--spaced-bottom">
       <li class="c-nav__item c-nav__item--boxed u-color-black
                  u-padding-bottom-small u-margin-left-huge">...</li>
     </ul>
@@ -1073,15 +1092,10 @@ no la escribimos.
 ```
 
 ```notes
-Tiene sentido crear el componente "MainNav"? Es la navegación principal. Si tienes
-suficiente con las utilidades, para que crear una abstracción de algo que no 
-vas a reutilizar?
+Tiene sentido crear el componente "MainNav"?
 
 Supongamos que la clase `c-nav` la hemos añadido porque tenemos un Element
 y queremos mantener la coherencia de nuestro naminb (Block > Element).
-
-Solo hay un MainNav en toda la aplicación, tiene sentido crear el componente?
-Podemos dejar las utilidades?
 
 Y el componente NavItem? Sólo hay uno...si lo encapsulamos en un componente.
 
@@ -1097,7 +1111,7 @@ necesitas, no antes. Por eso "-first", y no "-only".
 <nav className="u-padding-horizontal u-padding-vertical-tiny
                 u-color-primary u-margin-right-large
                 u-radius-circle u-width-100">
-    <ul class="u-padding-small-bottom">
+    <ul className="u-padding-small-bottom">
       {items.map(item => <NavItem />)}
     </ul>
 </nav>
@@ -1136,11 +1150,9 @@ Boostrap o demás.
 
 ---
 
+export default Invert
+
 # Next steps
-
----
-
-constraints over conventions.
 
 ---
 
@@ -1148,6 +1160,8 @@ JS + CSS = 💖?
 
 ```notes
 CSS-in-JS solutions (styled components, spectacle, etc)
+
+constraints over conventions
 ```
 
 ---
@@ -1165,15 +1179,15 @@ Forget naming conflicts! No need for namespaces! Byebye BEM!
 
 ---
 
-# (Our) Learnings
+## (Our) Learnings
 
 <ul>
   <Appear>
-    <li>Use software principles, even in CSS. Understand the tool.</li>
-    <li>Think in terms of Design Systems and Components.</li>
+    <li>Use software principles (even in CSS).</li>
+    <li>Think in terms of Design Systems/Components.</li>
     <li>Forget about content-based class naming.</li>
-    <li>Use utilities and abstract out components as needed.</li>
-    <li>Agree on structure, naming, principles, and linting.</li>
+    <li>Use utilities and abstract out components.</li>
+    <li>Agree on structure, naming, principles...</li>
   </Appear>
 </ul>
 
@@ -1194,30 +1208,35 @@ What questions do you have?
 
 ---
 
-# References
+## References
 
 [Wat - Gary Bernhardt](https://www.destroyallsoftware.com/talks/wat)
   
 [CSS and scalability - Adam Morse](http://mrmrs.cc/writing/2016/03/24/scalable-css/) 
 
-[CSS Utility Classes and "Separation of Concerns" - Adam Wathan](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
-
 [Functional Programming, CSS, and your sanity - Jon Gold](https://jon.gold/2015/07/functional-css/)
-
-[Immutable CSS - Harry Roberts](https://csswizardry.com/2015/03/immutable-css/)
 
 [Object Oriented CSS - Nicole Sullivan](https://github.com/stubbornella/oocss/wiki)
 
 ---
 
-# References
+## References
+
+[Immutable CSS - Harry Roberts](https://csswizardry.com/2015/03/immutable-css/)
+
+[CSS Utility Classes and "Separation of Concerns" - Adam Wathan](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+
 [In Defense of Utility-First CSS - Sarah Dayan](https://frontstuff.io/in-defense-of-utility-first-css)
 
 [Design Systems & React - Diana Mounter](https://www.youtube.com/watch?v=N-5TNKJ7eB0&feature=youtu.be&t=15m25s)
 
-[About HTML semantics and front-end architecture - Nicholas Gallager](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
+---
+
+## References
 
 [Cooking with Design Systems - Dan Mall](http://danmall.me/articles/cooking-with-design-systems/)
+
+[About HTML semantics and front-end architecture - Nicholas Gallager](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
 
 [Shadow DOM: Self-Contained Web Components - Eric Bidelman](https://developers.google.com/web/fundamentals/web-components/shadowdom)
 
