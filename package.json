@@ -7,10 +7,12 @@
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx"
+    "static": "mkdir -p public/images/ && cp -R images/ public/",
+    "build": "npm run static && mdx-deck build deck.mdx -d public/",
+    "pdf": "mdx-deck pdf deck.mdx"
   },
   "dependencies": {
-    "mdx-deck": "^1.7.0"
+    "mdx-deck": "^1.7.3"
   },
   "devDependencies": {},
   "repository": {
@@ -20,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/afontcu/maintainable-scalable-css/issues"
   },
-  "homepage": "https://github.com/afontcu/maintainable-scalable-css#readme",
-  "now": {
-    "alias": "maintainable-scalable-css"
-  }
+  "homepage": "https://github.com/afontcu/maintainable-scalable-css#readme"
 }
