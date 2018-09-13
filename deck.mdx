@@ -94,24 +94,14 @@ Link: https://twitter.com/mxstbr/status/1038073603311448064
 <img src="images/twitter-poll-results.png" />
 
 ```notes
-El primer problema con CSS es que nunca nos habiamos parado a entender qué estaba 
-pasando. Escribiamos en un lenguaje del que sabíamos cómo escribirlo, pero no
-lo entendíamos. Ni box model, ni cascada, ni especificidad ni nada de nada.
-Eramos como cabras locas, habeis visto nunca a una cabra loca?
+El primer problema: nunca nos habiamos parado a entender qué estaba 
+pasando. Escribiamos en un lenguaje que no entendíamos. Como cabras locas.
 
-Y es lo mismo en cualquier lenguaje. Puedes usar CSS sin entender la cascada
-igual que puedes usar Javascript sin entender scoping o las closures, pero
-vas a tener problemas cuando las cosas se salgan del camino habitual.
+Puedes usar CSS sin entender la cascada igual que puedes usar Javascript sin
+entender scoping o las closures, pero...
 
-Y esto no significa que JS sea un mal lenguaje ni que CSS sea un desastre
-incomprensible. Significa que hay que leer documentación, tutoriales, ejemplos,
-y aprender.
-
-
-El segundo problema con CSS es que esperábamos (nosotros y todo el mundo) que
-fuera sencillo. Total, solamente sirve para dar colores a una aplicación, no
-entiendo como puede costar tanto. Y el problema, como siempre, son las expectativas.
-No que sea fácil o dificil, sino la expectativa de "esto tiene que ser facil".
+El segundo problema con CSS es que esperábamos que fuera sencillo. Total, 
+solo sirve para dar colores. El problema son las expectativas.
 
 Y cuál es la consecuencia de estas dos cosas?
 ```
@@ -138,7 +128,7 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 
 ---
 
-[WAT GIF]
+<Image src="images/wat-1.jpg" />
 
 ---
 
@@ -157,15 +147,19 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 
 ---
 
-[WAT GIF]
+<Image src="images/wat-2.jpg" />
 
 ---
 
-<img src='images/nesting-hell.png' />
+<Image src='images/nesting-hell.png' />
 
 ```notes
 y ademas le añadiamos Sass. El desastre estaba asegurado.
 ```
+
+---
+
+<Image src='images/inception.png' />
 
 ---
 
@@ -185,11 +179,7 @@ section.accommodation .content-width .accommodation
 
 ---
 
-[WAT GIF]
-
----
-
-<Image src='images/inception.png' />
+<img src="images/wat-3.jpg" width="800" />
 
 ---
 
@@ -250,7 +240,7 @@ separation of _wat_?
 
 ---
 
-[WAT GIF]
+<img src="images/wat-4.jpg" width="1000" />
 
 ```notes
 Va, ya basta
@@ -326,7 +316,7 @@ Principle of Least Astonishment (POLA)
 ```notes
 Esto sabiamos que existia, pero que mas da? 
 
-Quieres ver un buen Principle of Least Astonishment?
+Principio de Minima Sorpresa
 ```
 
 ---
@@ -415,8 +405,35 @@ Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 
 ---
 
+...to this...
 
-...to this
+```jsx
+<div class="remove-product">
+  <h1 class="remove-product-title">Remove the product</h1>
+  <div class="remove-product-body">
+    <img class="remove-product-image" src="" alt="" />
+    <p>This action cannot be undone.</p>
+  </div>
+  <div class="remove-product-buttons">
+    <button class="remove">Yes</button>
+    <button>Cancel</button>
+  </div>
+</div>
+```
+
+```notes
+Hay un monton de clases. Por que? porque asi nos liberamos de la estructura
+concreta de HTML. Usamos clases como "hook" para estilos, no elementos.
+
+Simplificamos nuestros selectores.
+
+Primera lección: vamos a usar clases siempre que sea posible. Ni elementos ni ID
+```
+
+---
+
+...and then to this
+
 ```jsx
 <div class="modal">
   <h1 class="modal-title">...</h1>
@@ -432,26 +449,22 @@ Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 ```
 
 ```notes
-Vale, han pasado un monton de cosas.
-
-1. lo mas visible: hay un monton de clases. Por que? porque asi nos liberamos
-de la estructura concreta de HTML. Usamos clases como "hook" para estilos, no elementos.
-
-2. ahora hemos llamado a nuestro elemento "modal". Ojo que esto es mas importante
-de lo que parece. "modal" no habla del propósito de nuestro codigo (de hecho, 
-con este ejemplo no sabes para qué va a servir el modal. y eso es bueno). habla
+Ahora hemos llamado a nuestro elemento "modal". Ojo que esto es mas importante
+de lo que parece. "modal" no habla del propósito de nuestro codigo. habla
 de como luce, del aspecto de nuestro elemento. 
 
 Por eso lo llamamos "Visual CSS"
 
 Y puede parecer suuuuper evidente a dia de hoy, mas que nada porque este es el
 approach de la mayoria de frameworks (Boostrap, UIkit, etc). Pero no lo era 
-hace un tiempo, y nos habiamos dado bastantes hostias contra la pared por eso.
+hace un tiempo.
 ```
 
 ---
 
-but you are repeating yourself. in HTML.
+but you are repeating yourself.
+
+in HTML.
 
 _you and your "software principles"_
 
@@ -957,10 +970,9 @@ death by repetition
 ```
 ```scss
 .actions-list__item {
-  margin-right: $global-spacing-unit-large;;
-  &:last-child {
-    margin-right: 0;
-  }
+  margin-right: $global-spacing-unit-large;
+  
+  &:last-child { margin-right: 0; }
 }
 ```
 
@@ -975,6 +987,20 @@ lo mismo, era el naming y nuestras convenciones lo que nos impedía reaprovechar
 ```scss
 .u-margin-right-large {
   margin-right: $global-spacing-unit-large !important;
+}
+```
+
+---
+
+```scss
+.u-font-size-h5 {
+  font-size: map-get($global-font-sizes, "h5") !important;
+}
+```
+
+```scss
+.u-text-underline {
+  text-decoration: underline !important;
 }
 ```
 
