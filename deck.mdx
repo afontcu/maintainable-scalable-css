@@ -10,18 +10,18 @@ import { Invert } from 'mdx-deck/layouts'
   <title>The bumpy road to a maintainable, scalable CSS</title>
 </Head>
 
-
-
 ---
 
-according to most neuroscience studies, people's number one fear is **public speaking**.
+according to most neuroscience studies, 82% of the population agrees that
+their number one fear is **public speaking**.
 
 number two is **death**.
+
 ```notes
 Esto significa tres cosas:
 
 1) que en un entierro la gente prefiere estar en el ataúd que dando el réquiem
-2) que estoy venciendo a la muerte.
+2) que estamos venciendo a la muerte.
 ```
 
 ---
@@ -150,10 +150,6 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 
 <Image src='images/nesting-hell.png' />
 
-```notes
-y ademas le añadiamos Sass. El desastre estaba asegurado.
-```
-
 ---
 
 <Image src='images/inception.png' />
@@ -185,7 +181,7 @@ section.accommodation .content-width .accommodation
 	left: calc(100% + 30px); /*because of the padding*/
 }
 
-.vertical_menu_hidden aside.vertical_menu_area .vertical_menu_float .menu-item .second {
+.vertical_menu_float .menu-item .second {
 	left: calc(100% + 40px);
 }
 ```
@@ -223,11 +219,11 @@ CSS Zen Garden happened
 
 ---
 
-<img src='images/css-zen-garden.png' />
+<Image src='images/css-zen-garden.png' size="contain" />
 
 ---
 
-<img src='images/css-zen-garden-2.png' />
+<Image src='images/css-zen-garden-2.png' size="contain" />
 
 ---
 
@@ -239,28 +235,19 @@ CSS Zen Garden happened
 
 ```notes
 (es gracioso porque los links son inline por defecto)
-
-Para hacerlo, evidentmente, necesitamos estilos como este
-
-Vale, perfect, ningun problema. CSS se hace así
 ```
 
 ---
 
 <Image src='images/css-for-babies.png' />
 
-```notes
-Estábamos tan seguros que hasta le enseñabamos CSS así a los niños. Mirad que
-mierda de código.
-```
 
 ---
 
 "we are using separation of concerns"
 
 ```notes
-"SoC" porque por un lado teniamos el HTML definiendo el layout, y por otro
-el CSS dando estilos
+frase que queda muy bien en reuniones. ("puedes volver a poner la última"?)
 ```
 
 ---
@@ -270,10 +257,6 @@ separation of _wat_?
 ---
 
 <img src="images/wat-4.jpg" width="1000" />
-
-```notes
-Va, ya basta
-```
 
 ---
 
@@ -332,24 +315,6 @@ es como que jugabamos a ser ingenieros de software, pero con pretenciones
 
 ---
 
-<img src="images/css-meme.jpg" />
-
----
-
-Don't Repeat Yourself (DRY)
-
-Single Responsibility Principle (SRP)
-
-Principle of Least Astonishment (POLA)
-
-```notes
-Esto sabiamos que existia, pero que mas da? 
-
-Principio de Minima Sorpresa
-```
-
----
-
 export default Invert
 
 > The worst part about front-end development was that the other people solving your problems were front-end developers.
@@ -378,13 +343,7 @@ interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
 ```
 
 ```notes
-buenas intenciones sí teníamos. al fin y al cabo, queriamos separar responsabilidades,
-lo que no lo conseguimos del todo.
-
 al final nos dimos cuenta que lo que queriamos era poder reutilizar el CSS.
-
-teniamos la sensacion de estar escribiendo uuuna y otra vez las mismas cosas
-pero con nombres distintos (incluso entre proyectos).
 ```
 
 ---
@@ -408,6 +367,14 @@ al contenido.
 export default Invert
 
 # Chapter 2
+
+---
+
+## goals
+
+decouple CSS from HTML.
+
+from semantic CSS to visual CSS.
 
 ---
 
@@ -491,22 +458,6 @@ hace un tiempo.
 
 ---
 
-but you are repeating yourself.
-
-in HTML.
-
-_you and your "software principles"_
-
-```notes
-Si claro, en alguna parte vas a tener que repetirte.
-
-Llegamos a la conclusión que en alguna parte vas a acabar repitiéndote, quieras
-o no. Pero como queremos conseguir algo reusable, lo ideal seria repetirse en
-HTML, y así poder reaprovechar el CSS en diferentes proyectos.
-```
-
----
-
 what if...
 
 ---
@@ -537,19 +488,14 @@ is to reuse.
 
 ---
 
-Single Responsibility Principle in CSS
-
----
-
 ```scss
 .text-with-icon {}
 ```
 
----
-
 ```scss
 .icon-text {}
 ```
+
 ```notes
 No estabamos inventando nada nuevo. 
 
@@ -570,11 +516,11 @@ Nicole Sullivan es la creadora del concepto OOCSS, Object-oriented CSS.
 
 ---
 
-<img src="images/media-object.png" />
-
----
-
 <Image src="images/media-object-facebook.png" />
+
+```notes
+Boostrap incluye el object media por defecto
+```
 
 ---
 
@@ -612,13 +558,6 @@ Nicole Sullivan es la creadora del concepto OOCSS, Object-oriented CSS.
 </div>
 ```
 
-```notes
-Aqui vemos tambien algo interesante. Este alert que enseñábamos antes
-esta formado por un media y por las propias clases del alert.
-
-Software Principle: prefer Composition over Inheritance.
-```
-
 ---
 
 ```jsx
@@ -626,6 +565,10 @@ Software Principle: prefer Composition over Inheritance.
   <img class="media-img" />
   <p class="media-body alert-content">Changes saved successfully</p>
 </div>
+```
+
+```notes
+prefer Composition over Inheritance.
 ```
 
 ---
@@ -657,6 +600,8 @@ aplicaciones.
 
 we were not building pages anymore.
 
+---
+
 we were building components of a system.
 
 ---
@@ -666,11 +611,6 @@ from **styling pages** to creating **design systems**.
 ---
 
 SENIOR DESIGN SYSTEM ENGINEER
-
-```notes
-Esto lo pones en LinkedIn y tienes que ir a vivirte a una isla desierta para
-que dejen de llegarte mensajes. Y aun así.
-```
 
 ---
 
@@ -717,17 +657,17 @@ $global-spacing-unit-huge  =  $baseline * $unit-factor-huge;  // 96px
 ```
 
 ```notes
-Funcionaria exactamente igual usando javascript.
-
-Tendríamos nuestro theme.js o lo que sea, y allí crearíamos los valores
-válidos para nuestro sistema.
-
 Software Principle: Magic Numbers
 ```
 
 ---
 
-styles based on systems became harmonious.
+❤️ backends
+
+```notes
+Entre esto y que ya es fácil centrar verticalmente, nuestros backends están
+encantados. Cuando les enseñe CSS Grid lo van a flipar.
+```
 
 ---
 
@@ -757,16 +697,6 @@ tener algún valor.
 
 ---
 
-we had the right pieces.
-
-components as building blocks, using constraints, rules, and principles.
-
----
-
-we were ENGINEERING OUR UI.
-
----
-
 what about **naming**?
 
 what about **file structure**?
@@ -777,16 +707,6 @@ what about **file structure**?
 
 Inverted Triangle CSS (by Harry Roberts)
 
-
----
-
-## Why "inverted triangle"?
-
-from global to local.
-
-from generic to concrete.
-
-from low specificity to high specificity.
 
 ---
 
@@ -881,11 +801,9 @@ there are 2 hard problems in computer science: cache invalidation, naming things
 por ejemplo, un Media Object tiene varias partes. La imagen, el body.
 Como lo identificamos?
 
-Podríamos crear tres clases (media, image y body) pero es evidente los problemas
-que nos podemos encontrar con eso, no?
-
 Necesitabamos una nomenclatura que nos permitiera establecer las relaciones
-Y EL ENCAPSULAMIENTO que no nos ofrece el lenguaje out of the box (de momento).
+
+Encapsulamiento (not by default)
 ```
 
 ---
@@ -942,6 +860,52 @@ Utilities (.u-)
 Esta es nuestra "forma final", como escribimos CSS ahora mismo cuando tenemos
 que crear un componente. Es algo diferente si usamos estos principios sobre
 un framework JS (no namespaces en componentes).
+```
+
+---
+
+<Image src="images/remove-the-product.png" />
+
+---
+
+```jsx
+<div class="c-card">
+  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+  <div class="c-card__body">
+    <div class="o-media o-media--center u-padding">
+      <img class="o-media__img" src="" alt="" />
+      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+    </div>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">...</button>
+      <button class="c-btn c-btn--primary">...</button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+<Image src="images/wat.gif" />
+
+---
+
+```jsx
+<div class="c-card">
+  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+  <div class="c-card__body">
+    <div class="o-media o-media--center u-padding">
+      <img class="o-media__img" src="" alt="" />
+      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+    </div>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">...</button>
+      <button class="c-btn c-btn--primary">...</button>
+    </div>
+  </div>
+</div>
 ```
 
 ---
@@ -1057,11 +1021,9 @@ utility-first CSS.
 "first" significa que empezamos usando los bloques "Legos" más pequeños.
 
 Cuando vemos un patrón que se repite, ese es el momento de crear un componente.
+Como en JS.
 
-Es exactamente lo mismo que hacemos en React, Vue, Angular, o cualquier framework
-o lenguaje para construir aplicaciones.
-
-Así evitamos abstracciones prematuras.
+Evitamos abstracciones prematuras.
 ```
 
 ---
@@ -1075,95 +1037,6 @@ Me
 ---
 
 create a lot of small, reusable, focused CSS classes, and use them to build your UI.
-
----
-
-<Image src="images/remove-the-product.png" />
-
----
-
-```jsx
-<div class="c-card">
-  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
-  <div class="c-card__body">
-    <div class="o-media o-media--center u-padding">
-      <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
-    </div>
-    <div class="u-padding-small u-background-dark-gray
-                u-flex u-flex-justify-between">
-      <button class="c-btn c-btn--ghost">...</button>
-      <button class="c-btn c-btn--primary">...</button>
-    </div>
-  </div>
-</div>
-```
-
----
-
-<Image src="images/wat.gif" />
-
----
-
-```jsx
-<div class="c-card">
-  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
-  <div class="c-card__body">
-    <div class="o-media o-media--center u-padding">
-      <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
-    </div>
-    <div class="u-padding-small u-background-dark-gray
-                u-flex u-flex-justify-between">
-      <button class="c-btn c-btn--ghost">...</button>
-      <button class="c-btn c-btn--primary">...</button>
-    </div>
-  </div>
-</div>
-```
-
----
-
-```jsx
-<nav class="c-nav u-padding-horizontal u-padding-vertical-tiny
-            u-color-primary u-margin-right-large
-            u-radius-circle u-width-100">
-    <ul class="c-nav__list u-nav__list--spaced-bottom">
-      <li class="c-nav__item c-nav__item--boxed u-color-black
-                 u-padding-bottom-small u-margin-left-huge">...</li>
-    </ul>
-</nav>
-```
-
-```notes
-Tiene sentido crear el componente "MainNav"?
-```
-
----
-
-```jsx
-// Nav.js
-
-<nav className="u-padding-horizontal u-padding-vertical-tiny
-                u-color-primary u-margin-right-large
-                u-radius-circle u-width-100">
-    <ul className="u-padding-small-bottom">
-      {items.map(item => <NavItem />)}
-    </ul>
-</nav>
-```
-
-```jsx
-// NavItem.js
-
-<li className="c-nav-item u-padding-bottom-small
-                u-color-black u-margin-left-huge">...</li>
-```
-
-```notes
-Seguramente no. No vamos a reutilizarlo en todo el proyecto, así que...para
-qué? 
-```
 
 ---
 
@@ -1245,6 +1118,8 @@ export default Invert
 What questions do you have?
 
 (ask me anyting: @afontcu_ on Twitter)
+
+https://maintainable-scalable-css.now.sh/
 
 ---
 
