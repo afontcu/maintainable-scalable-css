@@ -1054,8 +1054,29 @@ create a lot of small, reusable, focused CSS classes, and use them to build your
 ---
 
 ```jsx
-// Modal.js (o Modal.vue, o...)
+<div class="c-card">
+  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+  <div class="c-card__body">
+    <div class="o-media o-media--center u-padding">
+      <img class="o-media__img" src="" alt="" />
+      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+    </div>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">...</button>
+      <button class="c-btn c-btn--primary">...</button>
+    </div>
+  </div>
+</div>
+```
 
+---
+
+<Image src="images/wat.gif" />
+
+---
+
+```jsx
 <div class="c-card">
   <h1 class="c-card__header u-padding u-text-hairline">...</h1>
   <div class="c-card__body">
@@ -1073,35 +1094,7 @@ create a lot of small, reusable, focused CSS classes, and use them to build your
 ```
 
 ```notes
-Creamos componentes cuando y donde hace falta.
 
-No cada elemento hijo de modal tiene su clase equivalente. Si no hace falta, 
-no la escribimos.
-```
-
----
-
-<Image src="images/wat.gif" />
-
----
-
-```jsx
-// Modal.js (o Modal.vue, o...)
-
-<div class="c-card">
-  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
-  <div class="c-card__body">
-    <div class="o-media o-media--center u-padding">
-      <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
-    </div>
-    <div class="u-padding-small u-background-dark-gray
-                u-flex u-flex-justify-between">
-      <button class="c-btn c-btn--ghost">...</button>
-      <button class="c-btn c-btn--primary">...</button>
-    </div>
-  </div>
-</div>
 ```
 
 ---
@@ -1119,14 +1112,6 @@ no la escribimos.
 
 ```notes
 Tiene sentido crear el componente "MainNav"?
-
-Supongamos que la clase `c-nav` la hemos añadido porque tenemos un Element
-y queremos mantener la coherencia de nuestro naminb (Block > Element).
-
-Y el componente NavItem? Sólo hay uno...si lo encapsulamos en un componente.
-
-Este es el beneficio principal de utility-first. Abstracciones cuando las
-necesitas, no antes. Por eso "-first", y no "-only".
 ```
 
 ---
@@ -1142,13 +1127,17 @@ necesitas, no antes. Por eso "-first", y no "-only".
     </ul>
 </nav>
 ```
+
 ```jsx
 // NavItem.js
 
-export default () => (
-  <li className="c-nav-item u-padding-bottom-small
-                  u-color-black u-margin-left-huge">...</li>
-)
+<li className="c-nav-item u-padding-bottom-small
+                u-color-black u-margin-left-huge">...</li>
+```
+
+```notes
+Seguramente no. No vamos a reutilizarlo en todo el proyecto, así que...para
+qué? 
 ```
 
 ---
