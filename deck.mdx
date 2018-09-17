@@ -134,13 +134,11 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 ```css
 .home.column a.product.class300 {
   width: 300px;
-  margin-left: 20px;
 }
 ```
 ```css
 .home.column a.product.class400 {
   width: 450px; /* wat */
-  margin-left: 60px;
 }
 ```
 
@@ -182,6 +180,22 @@ section.accommodation .content-width .accommodation
 
 ---
 
+```css
+.vertical_menu_float .menu-item .second {
+	left: calc(100% + 30px); /*because of the padding*/
+}
+
+.vertical_menu_hidden aside.vertical_menu_area .vertical_menu_float .menu-item .second {
+	left: calc(100% + 40px);
+}
+```
+
+---
+
+<Image src="images/wat-6.jpg" />
+
+---
+
 wat happened, CSS?
 
 ```notes
@@ -207,12 +221,13 @@ CSS Zen Garden happened
   display: inline;
 }
 ```
+
 ```notes
 (es gracioso porque los links son inline por defecto)
 
-Para hacerlo, evidentmente, necesitamos estilos como este. (explicar-lo)
+Para hacerlo, evidentmente, necesitamos estilos como este
 
-Vale, perfect, ningun problema. CSS se hace así. Y así lo hicimos
+Vale, perfect, ningun problema. CSS se hace así
 ```
 
 ---
