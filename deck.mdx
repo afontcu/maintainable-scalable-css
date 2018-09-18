@@ -173,7 +173,7 @@ section.accommodation .content-width .accommodation
 
 ---
 
-<Image src="images/wat-6.jpg" />
+<Image src="images/wat-5.png" size="contain" />
 
 ---
 
@@ -194,10 +194,6 @@ section.accommodation .content-width .accommodation
 ---
 
 wat happened, CSS?
-
-```notes
-que facil...
-```
 
 ---
 
@@ -248,7 +244,7 @@ separation of _wat_?
 
 ---
 
-<img src="images/wat-4.jpg" width="1000" />
+<Image src="images/wat-4.jpg" size="contain" />
 
 ---
 
@@ -362,11 +358,11 @@ export default Invert
 
 ---
 
-## goals
+# Goals
 
-decouple CSS from HTML.
+1) decouple CSS from HTML.
 
-from semantic CSS to visual CSS.
+2) from semantic CSS to visual CSS.
 
 ---
 
@@ -616,19 +612,23 @@ SENIOR DESIGN SYSTEM ENGINEER
 
 # Design systems
 
+Principles
+
 Rules
 
 Constraints
 
-Principles
+```notes
+principios, reglas y restricciones
+```
 
 ---
+
+**Principles**: Spacing should help establish relationship between elements.
 
 **Rules**: Spacing values must be proportional.
 
 **Constraints**: Only 5 spacing values available.
-
-**Principles**: Spacing should help establish relationship between elementos.
 
 ---
 
@@ -789,7 +789,8 @@ you get the idea.
 
 ---
 
-there are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.
+## there are two hard problems in computer science
+cache invalidation, naming things, and off-by-1 errors.
 
 ---
 
@@ -892,15 +893,14 @@ un framework JS (no namespaces en componentes).
 ---
 
 ```jsx
-<div class="c-card">
-  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+<div class="c-card c-card--rounded">
+  <h1 class="c-card__header u-padding">...</h1>
   <div class="c-card__body">
-    <div class="o-media o-media--center u-padding">
+    <div class="o-media o-media--center u-padding-horizontal-small">
       <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+      <p class="o-media__body c-paragraph c-paragraph--thin">...</p>
     </div>
-    <div class="u-padding-small u-background-dark-gray
-                u-flex u-flex-justify-between">
+    <div class="c-card__footer c-card__footer--dark">
       <button class="c-btn c-btn--ghost">...</button>
       <button class="c-btn c-btn--primary">...</button>
     </div>
@@ -920,10 +920,6 @@ las clases.
 ---
 
 <img src="images/antonio.png" />
-
----
-
-what if...
 
 ---
 
@@ -954,7 +950,7 @@ cuando los vamos necesitando, y no antes?
 death by repetition
 
 ```scss
-.o-media--large {
+.o-media--large .o-media__image {
   margin-right: $global-spacing-unit-large; }
 ```
 ```scss
@@ -963,10 +959,7 @@ death by repetition
 ```
 ```scss
 .actions-list__item {
-  margin-right: $global-spacing-unit-large;
-  
-  &:last-child { margin-right: 0; }
-}
+  margin-right: $global-spacing-unit-large; }
 ```
 
 ```notes
@@ -1032,11 +1025,46 @@ export default Invert
 
 > The best way of writing great CSS is **to avoid writing CSS**.
 
-Me
+Me (?)
 
 ---
 
 create a lot of small, reusable, focused CSS classes, and use them to build your UI.
+
+---
+
+```jsx
+<div class="u-padding u-border-radius u-background-white u-shadow-large">
+  <h1 class="u-padding u-text-hairline">...</h1>
+  <div class="u-padding-vertical-small">
+    <div class="o-media u-flex-items-center u-padding">
+      <img class="o-media__img" src="" alt="" />
+      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+    </div>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">...</button>
+      <button class="c-btn u-background-primary">...</button>
+    </div>
+  </div>
+</div>
+```
+
+```notes
+Nos cargamos muchos modificadores. Utilidades por defecto, modificadores cuando
+estan justificados (--ghost).
+
+Comentar integración w/ Vue, React...
+```
+
+---
+
+**OMG WTF INLINE STYLES**
+
+```notes
+En mi experiencia, es muy distinto de usar estilos inline. No trabajas con 
+cualquier valor posible. Trabajas con los valores que contempla tu design system.
+```
 
 ---
 
@@ -1097,9 +1125,9 @@ Forget naming conflicts! No need for namespaces! Byebye BEM!
 <ul>
   <Appear>
     <li>Use software principles (even in CSS).</li>
-    <li>Think in terms of Design Systems/Components.</li>
     <li>Forget about content-based class naming.</li>
-    <li>Use utilities and abstract out components.</li>
+    <li>Think in terms of Design Systems.</li>
+    <li>Utility-first. Abstract out components.</li>
     <li>Agree on structure, naming, principles...</li>
   </Appear>
 </ul>
