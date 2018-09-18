@@ -7,7 +7,7 @@ import { Image } from 'mdx-deck'
 import { Invert } from 'mdx-deck/layouts'
 
 <Head>
-  <title>The bumpy road to a maintainable, scalable CSS</title>
+  <title>From semantic CSS to utility-first CSS</title>
 </Head>
 
 ---
@@ -26,7 +26,7 @@ Esto significa tres cosas:
 
 ---
 
-<img src="images/death.png" />
+<Image src="images/death.png" size="contain" />
 
 ```notes
 3) que cualquiera puede inventarse datos y parecen ciertos.
@@ -78,7 +78,7 @@ Link: https://twitter.com/mxstbr/status/1038073603311448064
 
 ---
 
-<img src="images/twitter-poll-results.png" />
+<Image src="images/twitter-poll-results.png" size="contain" />
 
 ```notes
 El primer problema: nunca nos habiamos parado a entender qué estaba 
@@ -96,9 +96,7 @@ Y cuál es la consecuencia de estas dos cosas?
 
 ---
 
-# The bumpy road to a
-# maintainable, scalable CSS
-From the trenches
+## From semantic CSS to utility-first CSS
 
 ---
 
@@ -601,6 +599,14 @@ we were building components of a system.
 ---
 
 from **styling pages** to creating **design systems**.
+
+```notes
+Se trata de ver webs/apps de forma distinta: como sistemas dinamicos que 
+cambian, en lugar de algo finito como una pintura o un cuadro, donde todo
+tiene que ser perfecto.
+
+Atomic Design
+```
 
 ---
 
@@ -1127,6 +1133,8 @@ https://maintainable-scalable-css.now.sh/
 
 [Object Oriented CSS - Nicole Sullivan](https://github.com/stubbornella/oocss/wiki)
 
+[Front-end Style Guides - Anna Debenham](https://www.maban.co.uk/projects/front-end-style-guides/)
+
 ---
 
 ## References
@@ -1146,6 +1154,8 @@ https://maintainable-scalable-css.now.sh/
 [Cooking with Design Systems - Dan Mall](http://danmall.me/articles/cooking-with-design-systems/)
 
 [About HTML semantics and front-end architecture - Nicholas Gallager](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
+
+[Atomic Design - Brad Frost](http://atomicdesign.bradfrost.com/)
 
 [Shadow DOM: Self-Contained Web Components - Eric Bidelman](https://developers.google.com/web/fundamentals/web-components/shadowdom)
 
