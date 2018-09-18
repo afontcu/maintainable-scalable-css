@@ -5,7 +5,7 @@ import scss from 'react-syntax-highlighter/languages/prism/scss'
 const monospace =
   'SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace'
 
-const font = 'Satisfy, serif'
+const font = 'Kavoon, serif'
 
 export default {
   ...theme,
