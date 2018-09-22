@@ -73,6 +73,8 @@ He dado varias vueltas a como empezar esta charla...
 <Image src="images/twitter-poll.png" />
 
 ```notes
+Lila
+
 Link: https://twitter.com/mxstbr/status/1038073603311448064
 ```
 
@@ -85,7 +87,7 @@ El primer problema: nunca nos habiamos parado a entender qué estaba
 pasando. Escribiamos en un lenguaje que no entendíamos.
 
 El segundo problema con CSS es que esperábamos que fuera sencillo. Total, 
-solo sirve para dar colores. El problema son las expectativas.
+solo sirve para dar colores.
 
 Y cuál es la consecuencia de estas dos cosas?
 ```
@@ -93,6 +95,14 @@ Y cuál es la consecuencia de estas dos cosas?
 ---
 
 <Image src="images/no.gif" size="contain" />
+
+---
+
+<Image src="images/twitter-poll.png" />
+
+```notes
+Explicar.
+```
 
 ---
 
@@ -188,6 +198,7 @@ section.accommodation .content-width .accommodation
   padding: 0;
   list-style: none;
   visibility: hidden;
+  display: none;
 }
 ```
 
@@ -588,8 +599,6 @@ aplicaciones.
 
 we were not building pages anymore.
 
----
-
 we were building components of a system.
 
 ---
@@ -599,9 +608,9 @@ from **styling pages** to creating **design systems**.
 ```notes
 Se trata de ver webs/apps de forma distinta: como sistemas dinamicos que 
 cambian, en lugar de algo finito como una pintura o un cuadro, donde todo
-tiene que ser perfecto.
+tiene que ser perfecto y acabado.
 
-Atomic Design
+Atomic Design.
 ```
 
 ---
@@ -619,7 +628,12 @@ Rules
 Constraints
 
 ```notes
-principios, reglas y restricciones
+principios, reglas y restricciones.
+
+un design system es algo *muy* grande. Es algo que incluye personas, una 
+estrategia para aplicarlo, un buy-in por parte de la gente con dinero para
+financiarlo, un compromiso por parte del equipo para mantenerlo... pero aqui
+hablamos de hacia donde evolucionaba nuestro código.
 ```
 
 ---
@@ -729,6 +743,10 @@ Inverted Triangle CSS (by Harry Roberts)
     _modal.scss
 7-Utilities/
     _hidden.scss
+```
+
+```notes
+Todas las capas excepto la 6 son 100% reaprovechables entre proyectos.
 ```
 
 ---
@@ -1059,11 +1077,17 @@ Comentar integración w/ Vue, React...
 
 ---
 
-**OMG WTF INLINE STYLES**
+**inline styles? wat?**
+
+---
+
+<Image src="./images/wat-6.jpg" size="contain" />
 
 ```notes
 En mi experiencia, es muy distinto de usar estilos inline. No trabajas con 
 cualquier valor posible. Trabajas con los valores que contempla tu design system.
+
+Coherencia
 ```
 
 ---
@@ -1131,12 +1155,6 @@ Forget naming conflicts! No need for namespaces! Byebye BEM!
     <li>Agree on structure, naming, principles...</li>
   </Appear>
 </ul>
-
-```notes
-Atomic CSS es un buen "approach" para pensar en componentes y olvidar el concepto
-de diseñar/programar páginas. Contar con el apoyo del diseñador va a ser bastante
-útil, porque este mindset puede cambiar por completo el flujo de trabajo.
-```
 
 ---
 
