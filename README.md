@@ -1,7 +1,15 @@
-# The bumpy road to a maintainable, scalable CSS
+# Maintainable, scalable CSS
 
-Slides for my talk "The bumpy road to a maintainable, scalable CSS" for the
-[Barcelona Software Craftsmanship 2018](http://scbcn.github.io/) and 
-[CommitConf 2018](https://2018.commit-conf.com/).
+The slides of my talks:
 
-Slides are made with [mdx-deck](https://github.com/jxnblk/mdx-deck).
+* "From semantic CSS to utility-first CSS", for [Software Crafters 2018](http://scbcn.github.io/)
+
+* "Maintainable, scalable CSS" , for [Commit 2018](https://2018.commit-conf.com/).
+
+Yeah, same talk, two titles. Because potatoes.
+
+Slides available here: https://maintainable-scalable-css.now.sh
+
+---
+
+btw, they are made with [mdx-deck](https://github.com/jxnblk/mdx-deck).
