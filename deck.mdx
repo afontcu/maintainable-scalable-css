@@ -5,6 +5,7 @@ import { Head } from 'mdx-deck'
 import { Appear } from 'mdx-deck'
 import { Image } from 'mdx-deck'
 import { Invert } from 'mdx-deck/layouts'
+import { Split } from 'mdx-deck/layouts'
 
 <Head>
   <title>From semantic CSS to utility-first CSS</title>
@@ -167,6 +168,7 @@ section.accommodation .content-width .accommodation
 
 ---
 
+CANVIAR-LA!!!!
 <Image src="images/wat-3.jpg" size="contain" />
 
 ---
@@ -349,8 +351,6 @@ al final nos dimos cuenta que lo que queriamos era poder reutilizar el CSS.
 
 content-semantic class names is not a good idea.
 
-(if you want to reuse your CSS)
-
 ```notes
 Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
 pared de la habitación que estoy construyendo".
@@ -381,14 +381,14 @@ from this...
 
 ```jsx
 <div class="remove-product">
-  <h1>Remove the product</h1>
+  <h1></h1>
   <div>
-    <img src="" alt="" />
-    <p>This action cannot be undone.</p>
+    <img />
+    <p></p>
   </div>
   <div>
-    <button class="remove">Yes</button>
-    <button>Cancel</button>
+    <button class="remove">
+    <button>
   </div>
 </div>
 ```
@@ -400,18 +400,33 @@ Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 
 ---
 
-...to this...
+
+export default Split
 
 ```jsx
 <div class="remove-product">
-  <h1 class="remove-product-title">Remove the product</h1>
-  <div class="remove-product-body">
-    <img class="remove-product-image" src="" alt="" />
-    <p>This action cannot be undone.</p>
+  <h1>
+  <div>
+    <img>
+    <p>
   </div>
-  <div class="remove-product-buttons">
-    <button class="remove">Yes</button>
-    <button>Cancel</button>
+  <div>
+    <button class="remove">
+    <button>
+  </div>
+</div>
+```
+
+```jsx
+<div class="remove-pr">
+  <h1 class="remove-pr-title">
+  <div class="remove-pr-body">
+    <img class="remove-pr-image">
+    <p class="remove-pr-message">
+  </div>
+  <div class="remove-pr-buttons">
+    <button class="remove">
+    <button>
   </div>
 </div>
 ```
@@ -427,18 +442,32 @@ Primera lección: vamos a usar clases siempre que sea posible. Ni elementos ni I
 
 ---
 
-...and then to this
+export default Split
+
+```jsx
+<div class="remove-pr">
+  <h1 class="remove-pr-title">
+  <div class="remove-pr-body">
+    <img class="remove-pr-image">
+    <p class="remove-pr-message">
+  </div>
+  <div class="remove-pr-buttons">
+    <button class="remove">
+    <button>
+  </div>
+</div>
+```
 
 ```jsx
 <div class="modal">
-  <h1 class="modal-title">...</h1>
+  <h1 class="modal-title">
   <div class="modal-body">
-    <img class="modal-icon" />
-    <p class="modal-message">...</p>
+    <img class="modal-icon">
+    <p class="modal-message">
   </div>
   <div class="modal-buttons">
-    <button class="btn primary">Yes</buttom>
-    <button class="btn">Cancel</buttom>
+    <button class="btn primary">
+    <button class="btn">
   </div>
 </div>
 ```
@@ -448,12 +477,13 @@ Ahora hemos llamado a nuestro elemento "modal". Ojo que esto es mas importante
 de lo que parece. "modal" no habla del propósito de nuestro codigo. habla
 de como luce, del aspecto de nuestro elemento. 
 
-Por eso lo llamamos "Visual CSS"
+Visual CSS.
 
 Y puede parecer suuuuper evidente a dia de hoy, mas que nada porque este es el
 approach de la mayoria de frameworks (Boostrap, UIkit, etc). Pero no lo era 
 hace un tiempo.
 ```
+
 
 ---
 
@@ -529,14 +559,14 @@ Boostrap incluye el object media por defecto
 
 ```jsx
 <div class="modal">
-  <h1 class="modal-title">...</h1>
+  <h1 class="modal-title">
   <div class="modal-body">
-    <img class="modal-icon" />
-    <p class="modal-message">...</p>
+    <img class="modal-icon">
+    <p class="modal-message">
   </div>
   <div class="modal-buttons">
-    <button class="btn primary">Yes</buttom>
-    <button class="btn">Cancel</buttom>
+    <button class="btn primary">
+    <button class="btn">
   </div>
 </div>
 ```
@@ -545,14 +575,14 @@ Boostrap incluye el object media por defecto
 
 ```jsx
 <div class="modal">
-  <h1 class="modal-title">...</h1>
+  <h1 class="modal-title">
   <div class="media">
-    <img class="media-img" />
-    <p class="media-body">...</p>
+    <img class="media-img">
+    <p class="media-body">
   </div>
   <div class="modal-buttons">
-    <button class="btn primary">Yes</buttom>
-    <button class="btn">Cancel</buttom>
+    <button class="btn primary">
+    <button class="btn">
   </div>
 </div>
 ```
@@ -561,8 +591,8 @@ Boostrap incluye el object media por defecto
 
 ```jsx
 <div class="media alert">
-  <img class="media-img" />
-  <p class="media-body alert-content">Changes saved successfully</p>
+  <img class="media-img">
+  <p class="media-body alert-content">
 </div>
 ```
 
@@ -807,7 +837,8 @@ you get the idea.
 
 ---
 
-## there are two hard problems in computer science
+there are **2** hard problems in computer science:
+
 cache invalidation, naming things, and off-by-1 errors.
 
 ---
@@ -853,6 +884,12 @@ Encapsulamiento (not by default)
 
 ---
 
+last question:
+
+how do we differentiate objects, components and utilities?
+
+---
+
 # Namespaces
 
 Objects (.o-)
@@ -888,17 +925,17 @@ un framework JS (no namespaces en componentes).
 ---
 
 ```jsx
-<div class="c-card">
-  <h1 class="c-card__header u-padding u-text-hairline">...</h1>
+<div class="c-card c-card--rounded">
+  <h1 class="c-card__header u-padding u-text-hairline">
   <div class="c-card__body">
     <div class="o-media o-media--center u-padding">
-      <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+      <img class="o-media__img">
+      <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
     <div class="u-padding-small u-background-dark-gray
                 u-flex u-flex-justify-between">
-      <button class="c-btn c-btn--ghost">...</button>
-      <button class="c-btn c-btn--primary">...</button>
+      <button class="c-btn c-btn--ghost">
+      <button class="c-btn c-btn--primary">
     </div>
   </div>
 </div>
@@ -912,15 +949,16 @@ un framework JS (no namespaces en componentes).
 
 ```jsx
 <div class="c-card c-card--rounded">
-  <h1 class="c-card__header u-padding">...</h1>
+  <h1 class="c-card__header u-padding u-text-hairline">
   <div class="c-card__body">
-    <div class="o-media o-media--center u-padding-horizontal-small">
-      <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body c-paragraph c-paragraph--thin">...</p>
+    <div class="o-media o-media--center u-padding">
+      <img class="o-media__img">
+      <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
-    <div class="c-card__footer c-card__footer--dark">
-      <button class="c-btn c-btn--ghost">...</button>
-      <button class="c-btn c-btn--primary">...</button>
+    <div class="u-padding-small u-background-dark-gray
+                u-flex u-flex-justify-between">
+      <button class="c-btn c-btn--ghost">
+      <button class="c-btn c-btn--primary">
     </div>
   </div>
 </div>
@@ -1053,16 +1091,16 @@ create a lot of small, reusable, focused CSS classes, and use them to build your
 
 ```jsx
 <div class="u-padding u-border-radius u-background-white u-shadow-large">
-  <h1 class="u-padding u-text-hairline">...</h1>
+  <h1 class="u-padding u-text-hairline">
   <div class="u-padding-vertical-small">
     <div class="o-media u-flex-items-center u-padding">
-      <img class="o-media__img" src="" alt="" />
-      <p class="o-media__body u-text-h5 u-text-hairline">...</p>
+      <img class="o-media__img">
+      <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
     <div class="u-padding-small u-background-dark-gray
                 u-flex u-flex-justify-between">
-      <button class="c-btn c-btn--ghost">...</button>
-      <button class="c-btn u-background-primary">...</button>
+      <button class="c-btn c-btn--ghost">
+      <button class="c-btn u-background-primary">
     </div>
   </div>
 </div>
@@ -1206,3 +1244,5 @@ https://maintainable-scalable-css.now.sh/
 [Shadow DOM: Self-Contained Web Components - Eric Bidelman](https://developers.google.com/web/fundamentals/web-components/shadowdom)
 
 [CSS Modules](https://github.com/css-modules/css-modules)
+
+---
