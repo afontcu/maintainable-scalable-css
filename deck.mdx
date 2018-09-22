@@ -43,7 +43,7 @@ Software Engineer at Calidae
 ---
 
 # Adrià Fontcuberta
-Frontend Developer at Calidae
+Frontend Dev at Calidae
 
 @afontcu_
 
@@ -83,16 +83,6 @@ Link: https://twitter.com/mxstbr/status/1038073603311448064
 
 <Image src="images/twitter-poll-results.png" size="contain" />
 
-```notes
-El primer problema: nunca nos habiamos parado a entender qué estaba 
-pasando. Escribiamos en un lenguaje que no entendíamos.
-
-El segundo problema con CSS es que esperábamos que fuera sencillo. Total, 
-solo sirve para dar colores.
-
-Y cuál es la consecuencia de estas dos cosas?
-```
-
 ---
 
 <Image src="images/no.gif" size="contain" />
@@ -102,7 +92,12 @@ Y cuál es la consecuencia de estas dos cosas?
 <Image src="images/twitter-poll.png" />
 
 ```notes
-Explicar.
+(Explicar)
+
+Escribiamos en un lenguaje que no entendíamos.
+
+El segundo problema con CSS es que esperábamos que fuera sencillo.
+
 ```
 
 ---
@@ -153,43 +148,6 @@ inspired by "wat", by Gary Bernhardt a la CodeMash de 2012
 ---
 
 ```css
-body.product .content-body-wrapper.tabs-block .switch 
-.offer section.accommodation .content-width 
-.accommodation .select-accommodation-box .list .map {   
-  width: 100%; height: 300px; }
-
-body.product .content-body-wrapper.tabs-block .switch .offer 
-section.accommodation .content-width .accommodation 
-.select-accommodation-box .list .list-content .items 
-.accommodation-info #formAccomodation 
-.accommodation-form .mealplan .select-price input {
-  display: inline-block; }
-```
-
----
-
-CANVIAR-LA!!!!
-<Image src="images/wat-3.jpg" size="contain" />
-
----
-
-```css
-.vertical_menu_float .menu-item .second {
-	left: calc(100% + 30px); /*because of the padding*/
-}
-
-.vertical_menu_float .menu-item .second {
-	left: calc(100% + 40px);
-}
-```
-
----
-
-<Image src="images/wat-5.png" size="contain" />
-
----
-
-```css
 .barra_blava .menu .menu2 ul.sub{
   position: absolute;
   left: -9999px;
@@ -203,6 +161,14 @@ CANVIAR-LA!!!!
   display: none;
 }
 ```
+
+```notes
+somos nosotros que escribimos CSS "mal"?
+```
+
+---
+
+<Image src="images/wat-5.png" size="contain" />
 
 ---
 
@@ -240,11 +206,6 @@ CSS Zen Garden happened
 
 ---
 
-<Image src='images/css-for-babies.png' />
-
-
----
-
 "we are using separation of concerns"
 
 ```notes
@@ -265,21 +226,21 @@ separation of _wat_?
 
 ---
 
+export default Split
+
 ```jsx
 <div class="remove-product">
-  <h1>Remove the product</h1>
+  <h1>
   <div>
-    <img src="" alt="" />
-    <p>This action cannot be undone.</p>
+    <img>
+    <p>
   </div>
   <div>
-    <button class="remove">Yes</button>
-    <button>Cancel</button>
+    <button>
+    <button>
   </div>
 </div>
 ```
-
----
 
 ```scss
 .remove-product {
@@ -294,10 +255,6 @@ separation of _wat_?
     }
   }
 }
-```
-
-```notes
-Y este era CSS que escribiamos.
 ```
 
 ---
@@ -611,10 +568,6 @@ con varios proyectos, diferentes necesidades, contextos, equipos...
 
 ---
 
-a modal? nah.
-
----
-
 a component made of components.
 
 **modal** = media + button + card + ...
@@ -660,10 +613,9 @@ Constraints
 ```notes
 principios, reglas y restricciones.
 
-un design system es algo *muy* grande. Es algo que incluye personas, una 
-estrategia para aplicarlo, un buy-in por parte de la gente con dinero para
-financiarlo, un compromiso por parte del equipo para mantenerlo... pero aqui
-hablamos de hacia donde evolucionaba nuestro código.
+es nuestra Constitución.
+
+un design system es algo *muy* grande.
 ```
 
 ---
@@ -709,8 +661,8 @@ Software Principle: Magic Numbers
 ❤️ backends
 
 ```notes
-Entre esto y que ya es fácil centrar verticalmente, nuestros backends están
-encantados. Cuando les enseñe CSS Grid lo van a flipar.
+Ya es fácil centrar verticalmente, nuestros backends están encantados.
+Cuando les enseñe CSS Grid lo van a flipar.
 ```
 
 ---
@@ -734,9 +686,7 @@ $global-colors: (
 ```
 
 ```notes
-Esto ya lo podiamos haber hecho antes, con el CSS semántico. Seguramente si.
-Pero es una evolucion, porque en ese momento ni se nos ocurrió que esto pudiera
-tener algún valor. 
+Esto ya lo podiamos haber hecho antes, con el CSS semántico.
 ```
 
 ---
@@ -749,12 +699,14 @@ what about **file structure**?
 
 # ITCSS
 
-Inverted Triangle CSS (by Harry Roberts)
+Inverted Triangle CSS
+
+(by Harry Roberts)
 
 
 ---
 
-<Image src="images/itcss.png" />
+<Image src="images/itcss.png" size="contain" />
 
 ---
 
@@ -795,21 +747,6 @@ $unit-factor-huge:  16;
 
 ---
 
-/scss/1-Settings/_font-sizing.scss
-
-```scss
-$global-font-sizes: (
-  h1: 32px,
-  h2: 28px,
-  h3: 24px,
-  h4: 20px,
-  h5: 18px,
-  h6: 16px
-);
-```
-
----
-
 /scss/5-Objects/_media.scss
 
 ```scss
@@ -834,12 +771,6 @@ $global-font-sizes: (
 ---
 
 you get the idea.
-
----
-
-there are **2** hard problems in computer science:
-
-cache invalidation, naming things, and off-by-1 errors.
 
 ---
 
@@ -886,7 +817,7 @@ Encapsulamiento (not by default)
 
 last question:
 
-how do we differentiate objects, components and utilities?
+how do we differentiate **objects**, **components** and **utilities**?
 
 ---
 
@@ -926,14 +857,13 @@ un framework JS (no namespaces en componentes).
 
 ```jsx
 <div class="c-card c-card--rounded">
-  <h1 class="c-card__header u-padding u-text-hairline">
+  <h1 class="c-card__header u-text-hairline">
   <div class="c-card__body">
     <div class="o-media o-media--center u-padding">
       <img class="o-media__img">
       <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
-    <div class="u-padding-small u-background-dark-gray
-                u-flex u-flex-justify-between">
+    <div class="c-card__footer c-card__footer--between">
       <button class="c-btn c-btn--ghost">
       <button class="c-btn c-btn--primary">
     </div>
@@ -949,19 +879,22 @@ un framework JS (no namespaces en componentes).
 
 ```jsx
 <div class="c-card c-card--rounded">
-  <h1 class="c-card__header u-padding u-text-hairline">
+  <h1 class="c-card__header u-text-hairline">
   <div class="c-card__body">
     <div class="o-media o-media--center u-padding">
       <img class="o-media__img">
       <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
-    <div class="u-padding-small u-background-dark-gray
-                u-flex u-flex-justify-between">
+    <div class="c-card__footer c-card__footer--between">
       <button class="c-btn c-btn--ghost">
       <button class="c-btn c-btn--primary">
     </div>
   </div>
 </div>
+```
+
+```notes
+Mix de utilities y modifiers
 ```
 
 ---
@@ -975,7 +908,7 @@ las clases.
 
 ---
 
-<img src="images/antonio.png" />
+<Image src="images/antonio.png" size="contain" />
 
 ---
 
@@ -1029,20 +962,6 @@ lo mismo, era el naming y nuestras convenciones lo que nos impedía reaprovechar
 ```scss
 .u-margin-right-large {
   margin-right: $global-spacing-unit-large !important;
-}
-```
-
----
-
-```scss
-.u-font-size-h5 {
-  font-size: map-get($global-font-sizes, "h5") !important;
-}
-```
-
-```scss
-.u-text-underline {
-  text-decoration: underline !important;
 }
 ```
 
@@ -1110,12 +1029,14 @@ create a lot of small, reusable, focused CSS classes, and use them to build your
 Nos cargamos muchos modificadores. Utilidades por defecto, modificadores cuando
 estan justificados (--ghost).
 
-Comentar integración w/ Vue, React...
+Integración w/ Vue, React...
 ```
 
 ---
 
-**inline styles? wat?**
+inline styles?
+
+wat?
 
 ---
 
@@ -1161,23 +1082,18 @@ export default Invert
 
 JS + CSS = 💖?
 
+Shadow DOM
+
 ```notes
 CSS-in-JS solutions (styled components, spectacle, etc)
 
 constraints over conventions
-```
 
----
-
-Shadow DOM
-
-```notes
-Native solution for the global nature of HTML, CSS and JS.
 
 Scoped CSS: CSS defined inside shadow DOM is scoped to it. Style rules don't
 leak out and page styles don't bleed in.
 
-Forget naming conflicts! No need for namespaces! Byebye BEM!
+no name collisions.
 ```
 
 ---
@@ -1203,7 +1119,7 @@ What questions do you have?
 
 (ask me anyting: @afontcu_ on Twitter)
 
-https://maintainable-scalable-css.now.sh/
+[https://maintainable-scalable-css.now.sh/](https://maintainable-scalable-css.now.sh/)
 
 ---
 
