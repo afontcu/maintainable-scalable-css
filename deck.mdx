@@ -83,6 +83,8 @@ Link: https://twitter.com/mxstbr/status/1038073603311448064
 
 ---
 
+export default Invert
+
 <Image src="images/no.gif" size="contain" />
 
 ---
@@ -92,12 +94,15 @@ Link: https://twitter.com/mxstbr/status/1038073603311448064
 ```notes
 (Explicar)
 
-Escribiamos en un lenguaje que no entendíamos.
+1) Escribiamos en un lenguaje que no entendíamos.
 
-El segundo problema con CSS es que esperábamos que fuera sencillo.
+2) Esperábamos que fuera sencillo.
 
 
-Me di cuenta 
+No hubiera sabido la respuesta hace un tiempo.
+
+La charla cuenta como ha evolucionado la forma en que escribimos CSS a medida
+que cambia nuestra comprensión del lenguaje y de las UI.
 ```
 
 ---
@@ -251,9 +256,6 @@ Adam Morse
 
 ```notes
 http://mrmrs.cc/writing/2016/03/24/scalable-css/
-
-Por suerte, gente muy inteligente ha estado pensando en como escalar nuestras
-interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
 ```
 
 ---
@@ -264,8 +266,16 @@ interfícies, y en concreto cuál es la relación entre este objetivo y CSS.
 
 2) CSS is not reusable.
 
+---
+
+```jsx
+<div class="remove-product">
+  ...
+</div>
+```
+
 ```notes
-CSS semántico
+CSS semántico <-- explicar
 ```
 
 ---
@@ -322,33 +332,16 @@ Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 
 ---
 
-
-export default Split
+...to this...
 
 ```jsx
-//  Before
 <div class="remove-product">
-  <h1>
-  <div>
-    <img>
-    <p>
+  <h1 class="remove-product-title">
+  <div class="remove-product-body">
+    <img class="remove-product-image">
+    <p class="remove-product-message">
   </div>
-  <div>
-    <button class="remove">
-    <button>
-  </div>
-</div>
-```
-
-```jsx
-//  After
-<div class="remove-pr">
-  <h1 class="remove-pr-title">
-  <div class="remove-pr-body">
-    <img class="remove-pr-image">
-    <p class="remove-pr-message">
-  </div>
-  <div class="remove-pr-buttons">
+  <div class="remove-product-buttons">
     <button class="remove">
     <button>
   </div>
@@ -366,25 +359,9 @@ Primera lección: vamos a usar clases siempre que sea posible. Ni elementos ni I
 
 ---
 
-export default Split
+...and to this
 
 ```jsx
-//  Before
-<div class="remove-pr">
-  <h1 class="remove-pr-title">
-  <div class="remove-pr-body">
-    <img class="remove-pr-image">
-    <p class="remove-pr-message">
-  </div>
-  <div class="remove-pr-buttons">
-    <button class="remove">
-    <button>
-  </div>
-</div>
-```
-
-```jsx
-//  After
 <div class="modal">
   <h1 class="modal-title">
   <div class="modal-body">
@@ -399,9 +376,7 @@ export default Split
 ```
 
 ```notes
-Ahora hemos llamado a nuestro elemento "modal". Ojo que esto es mas importante
-de lo que parece. "modal" no habla del propósito de nuestro codigo. habla
-de como luce, del aspecto de nuestro elemento. 
+Mas importante de lo que parece. "modal" no habla del propósito de nuestro codigo.
 
 Visual CSS.
 
@@ -409,7 +384,6 @@ Y puede parecer suuuuper evidente a dia de hoy, mas que nada porque este es el
 approach de la mayoria de frameworks (Boostrap, UIkit, etc). Pero no lo era 
 hace un tiempo.
 ```
-
 
 ---
 
