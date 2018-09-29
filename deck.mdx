@@ -150,10 +150,6 @@ export default Invert
 
 ---
 
-<Image src='images/nesting-hell.png' />
-
----
-
 <Image src="images/wat-css-3.png" size="contain" />
 
 ---
@@ -161,6 +157,26 @@ export default Invert
 export default Invert
 
 <Image src="images/wat-5.png" size="contain" />
+
+---
+
+<Image src='images/nesting-hell.png' />
+
+---
+
+export default Invert
+
+```css
+body.product .content-body-wrapper.tabs-block .switch
+.offer section.accommodation .content-width .accommodation
+.select-accommodation-box .list .map { width: 100%; height: 300px; }
+
+body.product .content-body-wrapper.tabs-block .switch .offer
+section.accommodation .content-width .accommodation
+.select-accommodation-box .list .list-content .items
+.accommodation-info #formAccomodation .accommodation-form 
+.mealplan .select-price input { display: inline-block }
+```
 
 ```notes
 Somos nosotros que escribimos "mal" CSS?
