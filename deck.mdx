@@ -343,8 +343,6 @@ export default Invert
 
 export default Invert
 
-from this...
-
 ```jsx
 <div class="remove-product">
   <h1>...
@@ -360,6 +358,8 @@ from this...
 ```
 
 ```notes
+from this...
+
 Primer paso para desacoplar: usar clases como hooks en lugar de puros elementos.
 Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 ```
@@ -367,8 +367,6 @@ Conseguimos un primer punto de libertad: No dependemos del markup exacto.
 ---
 
 export default Invert
-
-...to this...
 
 ```jsx
 <div class="remove-product">
@@ -396,8 +394,6 @@ Primera lección: vamos a usar clases siempre que sea posible. Ni elementos ni I
 ---
 
 export default Invert
-
-...and to this
 
 ```jsx
 <div class="modal">
@@ -635,11 +631,11 @@ $unit-factor-huge:  16;
 export default Invert
 
 ```scss
-$global-spacing-unit-tiny  =  $baseline * $unit-factor-tiny;  // 6px
-$global-spacing-unit-small =  $baseline * $unit-factor-small; // 12px
-$global-spacing-unit       =  $baseline * $unit-factor;       // 24px
-$global-spacing-unit-large =  $baseline * $unit-factor-large; // 48px
-$global-spacing-unit-huge  =  $baseline * $unit-factor-huge;  // 96px
+$spacing-unit-tiny  =  $baseline * $unit-factor-tiny;  // 6px
+$spacing-unit-small =  $baseline * $unit-factor-small; // 12px
+$spacing-unit       =  $baseline * $unit-factor;       // 24px
+$spacing-unit-large =  $baseline * $unit-factor-large; // 48px
+$spacing-unit-huge  =  $baseline * $unit-factor-huge;  // 96px
 ```
 
 ---
@@ -814,9 +810,9 @@ export default Invert
 
 .o-media__body { flex: 1; }
 
-.o-media__image { margin-right: $global-spacing-unit; }
+.o-media__image { margin-right: $spacing-unit; }
 
-.o-media--large .o-media__image { margin-right: $global-spacing-unit-large; }
+.o-media--large .o-media__image { margin-right: $spacing-unit-large; }
 ```
 
 ```notes
@@ -904,15 +900,15 @@ death by repetition
 
 ```scss
 .o-media--large .o-media__image {
-  margin-right: $global-spacing-unit-large; }
+  margin-right: $spacing-unit-large; }
 ```
 ```scss
 .c-list_item--large {
-  margin-right: $global-spacing-unit-large; }
+  margin-right: $spacing-unit-large; }
 ```
 ```scss
 .actions-list__item {
-  margin-right: $global-spacing-unit-large; }
+  margin-right: $spacing-unit-large; }
 ```
 
 ```notes
@@ -928,7 +924,7 @@ export default Invert
 
 ```scss
 .u-margin-right-large {
-  margin-right: $global-spacing-unit-large !important;
+  margin-right: $spacing-unit-large !important;
 }
 ```
 
