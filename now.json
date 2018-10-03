@@ -1,5 +1,6 @@
 {
   "public": true,
   "type": "static",
-  "alias": "maintainable-scalable-css"
+  "alias": "maintainable-scalable-css",
+  "files": ["dist"]
 }
