@@ -134,16 +134,6 @@ export default Invert
 
 export default Invert
 
-<Image src="images/wat-2.jpg" />
-
----
-
-<Image src="images/wat-css-3.png" size="contain" />
-
----
-
-export default Invert
-
 <Image src="images/wat-5.png" size="contain" />
 
 ---
@@ -202,24 +192,6 @@ export default Invert
 
 ---
 
-"we are using separation of concerns"
-
-```notes
-frase que queda muy bien en reuniones. ("puedes volver a poner la última"?)
-```
-
----
-
-separation of _wat_?
-
----
-
-export default Invert
-
-<Image src="images/wat-4.jpg" size="contain" />
-
----
-
 <Image src="images/remove-the-product.png" />
 
 ---
@@ -254,28 +226,6 @@ export default Split
     }
   }
 }
-```
-
----
-
-The "P" in CSS stands for "Principles"
-
-```notes
-es como que jugabamos a ser ingenieros de software, pero con pretenciones
-
-"este principio me gusta, voy a usarlo. este no, pues no lo uso"
-```
-
----
-
-export default Invert
-
-> The worst part about front-end development was that the other people solving your problems were front-end developers.
-
-Adam Morse
-
-```notes
-http://mrmrs.cc/writing/2016/03/24/scalable-css/
 ```
 
 ---
@@ -572,10 +522,6 @@ Atomic Design.
 
 ---
 
-SENIOR DESIGN SYSTEM ENGINEER
-
----
-
 # Design systems
 
 Principles
@@ -651,82 +597,15 @@ Inverted Triangle CSS
 
 (by Harry Roberts)
 
-
----
-
-<Image src="images/itcss.png" size="contain" />
-
----
-
-export default Invert
-
-```bash
-1-Settings/
-    _colors.scss
-2-Tools/
-    _mixins.scss
-3-Base/
-    _normalize.scss
-4-Generic/
-    _image.scss
-5-Objects/
-    _media.scss
-6-Components/
-    _modal.scss
-7-Utilities/
-    _hidden.scss
-```
-
 ```notes
-Todas las capas excepto la 6 son 100% reaprovechables entre proyectos.
+7 capas (físicamente: 7 carpetas) cada una con un propósito.
+dar estructura y limitaciones a algo que no tiene (CSS).
+
+ordenar CSS por especificidad. De menos a más.
+ordenar CSS por alcance. De más a menos.
+
++ namespaces
 ```
-
----
-
-export default Invert
-
-/scss/1-Settings/_core.scss
-
-```scss
-$baseline: 6px;
-
-$unit-factor-tiny:   1;
-$unit-factor-small:  2;
-$unit-factor:        4;
-$unit-factor-large:  8;
-$unit-factor-huge:  16;
-```
-
----
-
-export default Invert
-
-/scss/5-Objects/_media.scss
-
-```scss
-.media { ... }
-
-.media-img { ... }
-
-.media-body { ... }
-```
-
-
----
-
-export default Invert
-
-/scss/6-Components/_modal.scss
-
-```scss
-.modal { ... }
-
-.modal-buttons { ... }
-```
-
----
-
-you get the idea.
 
 ---
 
@@ -745,49 +624,9 @@ Encapsulamiento (not by default)
 
 ---
 
-export default Invert
-
-```css
-.block {}
-
-.block__element {}
-
-.block--modifier {}
-```
-```scss
-.block__element--modifier {}
-```
-
----
-
-export default Invert
-
-```css
-.person {}
-
-.person__eyes {}
-
-.person--tall {}
-```
-```scss
-.person__eyes--blue {}
-```
-
----
-
 last question:
 
 how do we differentiate **objects**, **components** and **utilities**?
-
----
-
-# Namespaces
-
-Objects (.o-)
-
-Components (.c-)
-
-Utilities (.u-)
 
 ---
 
@@ -866,21 +705,6 @@ Mix de utilities y modifiers.
 
 Niño pequeño dando cabezazos al teclado.
 ```
-
----
-
-it looks weird.
-
-```notes
-pero con el tiempo BEM te seduce, con su coherencia y su forma de encapsular 
-las clases.
-```
-
----
-
-export default Invert
-
-<Image src="images/antonio.png" size="contain" />
 
 ---
 
@@ -987,25 +811,6 @@ Integración w/ Vue, React...
 
 ---
 
-wat?
-
-inline styles?
-
----
-
-export default Invert
-
-<Image src="images/wat-6.jpg" size="contain" />
-
-```notes
-En mi experiencia, es muy distinto de usar estilos inline. No trabajas con 
-cualquier valor posible. Trabajas con los valores que contempla tu design system.
-
-Coherencia
-```
-
----
-
 it is possible to build a whole new component without writing 
 **a single line of CSS**.
 
@@ -1017,7 +822,7 @@ export default Invert
 
 ---
 
-"a lot of things happened in 40 minutes"
+"a lot of things happened in ~20 minutes"
 
 ---
 
@@ -1031,26 +836,6 @@ No necesitas mucho más ahora mismo. Con CSS Grid + el framework de JS que esté
 usando, creo firmemente que hay muchos casos de uso resueltos con una buena
 estructura inicial de CSS, sin necesitar una librería entera predefinida como
 Boostrap o demás.
-```
-
----
-
-# Next steps
-
-JS + CSS = 💖?
-
-Shadow DOM (Scoped CSS)
-
-```notes
-CSS-in-JS solutions (styled components, spectacle, etc)
-
-constraints over conventions
-
-
-Scoped CSS: CSS defined inside shadow DOM is scoped to it. Style rules don't
-leak out and page styles don't bleed in.
-
-no name collisions.
 ```
 
 ---
@@ -1080,7 +865,7 @@ What questions do you have?
 
 (ask me anyting! @afontcu_ on Twitter)
 
-[https://maintainable-scalable-css.now.sh/](https://maintainable-scalable-css.now.sh/)
+[https://maintainable-scalable-css-uoc.now.sh/](https://maintainable-scalable-css-uoc.now.sh/)
 
 ---
 
