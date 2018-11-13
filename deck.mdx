@@ -214,19 +214,6 @@ export default Invert
 
 1) decouple CSS from HTML.
 
-2) from semantic CSS to visual CSS.
-
-```notes
-Cuando juegas con Legos no piensas "ah, mira una pieza que forma parte de la
-pared de la habitación que estoy construyendo".
-
-Piensas: "ah mira, una 2x2 gris claro". Puedes hacer lo que quieras con ella.
-
-No puedes reutilizar el propósito de una pieza.
-
-Puedes reutilizarla si solo cuenta cómo se ve.
-```
-
 ---
 
 export default Invert
@@ -271,12 +258,22 @@ export default Invert
 ```
 
 ```notes
-Hay un monton de clases. Por que? porque asi nos liberamos de la estructura
-concreta de HTML. Usamos clases como "hook" para estilos, no elementos.
-
 Simplificamos nuestros selectores.
+Clases siempre que sea posible. Ni elementos ni ID
+```
 
-Primera lección: vamos a usar clases siempre que sea posible. Ni elementos ni ID
+---
+
+2) Make CSS reusable
+
+from semantic CSS to visual CSS.
+
+```notes
+Metáfora LEGO.
+
+No puedes reutilizar el propósito de una pieza.
+
+Puedes reutilizarla si solo cuenta cómo se ve.
 ```
 
 ---
@@ -299,8 +296,6 @@ export default Invert
 
 ```notes
 Mas importante de lo que parece. "modal" no habla del propósito de nuestro codigo.
-
-Visual CSS.
 
 Y puede parecer suuuuper evidente a dia de hoy, mas que nada porque este es el
 approach de la mayoria de frameworks (Boostrap, UIkit, etc). Pero no lo era 
@@ -402,7 +397,7 @@ export default Invert
 ```jsx
 <div class="modal">
   <h1 class="modal-title">
-  <div class="media">        <--
+  <div class="media modal-body">        <--
     <img class="media-img">  <--
     <p class="media-body">   <--
   </div>
@@ -447,6 +442,8 @@ Muy parecido a lo que se ha convertido desarrollo frontend a día de hoy.
 ---
 
 we were not building pages anymore.
+
+we are creating **components**, and composing them.
 
 from **styling pages** to creating **design systems**.
 
@@ -512,66 +509,50 @@ $spacing-unit       =  $baseline * $unit-factor;       // 24px
 $spacing-unit-large =  $baseline * $unit-factor-large; // 48px
 $spacing-unit-huge  =  $baseline * $unit-factor-huge;  // 96px
 ```
-
----
-
-what about **file structure**?
-
-what about **naming**?
-
----
-
-# ITCSS
-
-Inverted Triangle CSS
-
-(by Harry Roberts)
-
-```notes
-7 capas (físicamente: 7 carpetas) cada una con un propósito.
-dar estructura y limitaciones a algo que no tiene (CSS).
-
-ordenar CSS por especificidad. De menos a más.
-ordenar CSS por alcance. De más a menos.
-
-+ namespaces
-```
-
----
-
-# BEM
-
-(Block - Element - Modifier)
-
-```notes
-por ejemplo, un Media Object tiene varias partes. La imagen, el body.
-Como lo identificamos?
-
-Necesitabamos una nomenclatura que nos permitiera establecer las relaciones
-
-Encapsulamiento (not by default)
-```
-
 ---
 
 export default Invert
 
-/scss/5-Objects/_objects.media.scss
-
 ```scss
-.o-media { display: flex; align-items: flex-start; }
-
-.o-media__body { flex: 1; }
-
-.o-media__image { margin-right: $spacing-unit; }
-
-.o-media--large .o-media__image { margin-right: $spacing-unit-large; }
+.modal-body {
+  margin-left: $global-spacing-unit;
+}
 ```
 
-```notes
-Esta es nuestra "forma final", como escribimos CSS ahora mismo cuando tenemos
-que crear un componente. Es algo diferente si usamos estos principios sobre
-un framework JS (no namespaces en componentes).
+---
+
+## Other important decisions
+
+File structure _(ITCSS)_.
+
+Naming _(BEM)_.
+
+---
+
+## File Structure
+
+Settings
+
+Objects
+
+Components
+
+Utilitites
+
+---
+
+export default Invert 
+
+## Naming
+
+```scss
+.o-media {}
+
+.o-media__img {}
+
+.o-media__body {}
+
+.o-media--large {}
 ```
 
 ---
@@ -586,7 +567,7 @@ export default Invert
 <div class="c-card c-card--rounded">
   <h1 class="c-card__header u-text-hairline">
   <div class="c-card__body">
-    <div class="o-media o-media--center u-padding">
+    <div class="o-media o-media--center o-box">
       <img class="o-media__img">
       <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
@@ -612,7 +593,7 @@ export default Invert
 <div class="c-card c-card--rounded">
   <h1 class="c-card__header u-text-hairline">
   <div class="c-card__body">
-    <div class="o-media o-media--center u-padding">
+    <div class="o-media o-media--center o-box">
       <img class="o-media__img">
       <p class="o-media__body u-text-h5 u-text-hairline">
     </div>
@@ -645,7 +626,7 @@ death by repetition
   margin-right: $spacing-unit-large; }
 ```
 ```scss
-.c-actions-list__item {
+.c-actions-list--large .c-actions-list__item {
   margin-right: $spacing-unit-large; }
 ```
 
@@ -738,6 +719,10 @@ Integración w/ Vue, React...
 it is possible to build a whole new component without writing 
 **a single line of CSS**.
 
+```notes
+CSS as API
+```
+
 ---
 
 export default Invert
@@ -756,10 +741,9 @@ Scss + ITCSS + BEM + Namespaces
 [Github](https://github.com/calidae/normandy-css)
 
 ```notes
-No necesitas mucho más ahora mismo. Con CSS Grid + el framework de JS que estés
-usando, creo firmemente que hay muchos casos de uso resueltos con una buena
-estructura inicial de CSS, sin necesitar una librería entera predefinida como
-Boostrap o demás.
+No necesitas mucho más ahora mismo. Con CSS Grid + framework de JS.
+
+Sin necesitar una librería entera predefinida como Boostrap.
 ```
 
 ---
