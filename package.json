@@ -12,7 +12,7 @@
     "pdf": "mdx-deck pdf deck.mdx"
   },
   "dependencies": {
-    "mdx-deck": "^1.7.3"
+    "mdx-deck": "^1.7.10"
   },
   "devDependencies": {},
   "repository": {
