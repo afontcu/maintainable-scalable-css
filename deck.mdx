@@ -204,11 +204,11 @@ export default Split
 
 # Issues
 
-1) HTML and CSS are too coupled.
+1) HTML and CSS were too coupled.
 
-2) CSS is not reusable.
+2) CSS was not reusable.
 
-3) Learn CSS.
+3) We needed to Learn CSS.
 
 ```notes
 contexto: agencia digital!
@@ -222,9 +222,13 @@ export default Invert
 
 ---
 
-# Goals
+one issue at a time.
 
-1) decouple CSS from HTML.
+---
+
+1) HTML and CSS were too coupled.
+
+**Decouple them!**
 
 ---
 
@@ -276,9 +280,9 @@ Clases siempre que sea posible. Ni elementos ni ID
 
 ---
 
-2) Make CSS reusable
+2) CSS was not reusable.
 
-from semantic CSS to visual CSS.
+**From semantic CSS to visual CSS.**
 
 ```notes
 Metáfora LEGO.
@@ -286,6 +290,24 @@ Metáfora LEGO.
 No puedes reutilizar el propósito de una pieza.
 
 Puedes reutilizarla si solo cuenta cómo se ve.
+```
+
+---
+
+export default Invert
+
+```jsx
+<div class="remove-product">
+  <h1 class="remove-product-title">
+  <div class="remove-product-body">
+    <img class="remove-product-image">
+    <p class="remove-product-message">
+  </div>
+  <div class="remove-product-buttons">
+    <button class="remove">
+    <button>
+  </div>
+</div>
 ```
 
 ---
@@ -352,6 +374,14 @@ export default Invert
 
 ```scss
 .icon-text {}
+```
+
+---
+
+export default Invert
+
+```scss
+.text-with-icon-on-left {}
 ```
 
 ```notes
@@ -473,6 +503,10 @@ anyway.
 
 ---
 
+decoupled, understood, visual CSS.
+
+---
+
 our CSS classes were now reusable across projects.
 
 ```notes
@@ -495,7 +529,9 @@ Muy parecido a lo que se ha convertido desarrollo frontend a día de hoy.
 
 we were not building pages anymore.
 
-we are creating **components**, and composing them.
+we were creating **components**, and composing them.
+
+---
 
 from **styling pages** to creating **design systems**.
 
@@ -507,6 +543,10 @@ Atomic Design.
 
 RETO: CONSISTENCIA Y COHERENCIA.
 ```
+
+---
+
+design _wat_?
 
 ---
 
@@ -584,17 +624,15 @@ Cuando les enseñe CSS Grid lo van a flipar.
 
 ## Other important decisions
 
-File structure _(ITCSS)_.
+File structure.
 
-Naming _(BEM)_.
+Naming.
 
 ---
 
-## File Structure
-
 Settings
 
-(_tools_, _generic_, _base_)
+Global defaults
 
 Objects
 
@@ -602,15 +640,41 @@ Components
 
 Utilitites
 
+```notes
+De genérico a específico.
+De global a local.
+De amplio a concentrado.
+```
+
+---
+
+export default Invert
+
+/scss/1-Settings/_settings.core.scss
+
+```scss
+$baseline: 6px;
+
+$unit-factor-tiny:  1;
+$unit-factor-small: 2;
+$unit-factor:       4;
+
+$spacing-unit-tiny  =  $baseline * $unit-factor-tiny;  // 6px
+$spacing-unit-small =  $baseline * $unit-factor-small; // 12px
+$spacing-unit       =  $baseline * $unit-factor;       // 24px
+```
+
 ---
 
 export default Invert 
 
 ## Naming
 
-BEM
+BEM (Block, Element, Modifier)
 
 ---
+
+export default Invert
 
 ```scss
 .human {}
@@ -626,7 +690,25 @@ BEM
 
 ---
 
-Namespaced BEM
+export default Invert
+
+```scss
+.media {}
+
+.media__img {}
+
+.media__body {}
+
+.media--large {}
+```
+
+```notes
+Nos quedaba un problema por resolver. Object? Component?
+```
+
+---
+
+export default Invert
 
 ```scss
 .o-media {}
@@ -636,6 +718,29 @@ Namespaced BEM
 .o-media__body {}
 
 .o-media--large {}
+```
+
+---
+
+export default Invert
+
+/scss/5-Objects/_objects.media.scss
+
+```scss
+.o-media { display: flex; align-items: flex-start; }
+
+.o-media__body { flex: 1; }
+
+.o-media__image { margin-right: $spacing-unit; }
+
+.o-media--large .o-media__image {
+  margin-right: $spacing-unit-large; }
+```
+
+```notes
+Esta es nuestra "forma final", como escribimos CSS ahora mismo cuando tenemos
+que crear un componente. Es algo diferente si usamos estos principios sobre
+un framework JS (no namespaces en componentes).
 ```
 
 ---
@@ -741,6 +846,20 @@ Width and height utilities
 Text sizes, colors, styles and weights
 
 ---
+
+export default Invert
+
+/scss/7-Utilities/_utilities.height.scss
+
+```scss
+.u-height-none { height: 0; }
+
+.u-height-full { height: 100%; }
+
+.u-height-viewport { height: 100vh; }
+```
+
+---
 export default Invert
 
 # Chapter 3
@@ -761,13 +880,13 @@ Evitamos abstracciones prematuras.
 
 ---
 
-export default Invert
-
-<Image src="images/bad-css-meme.jpg" size="contain" />
+create a lot of small, reusable, focused CSS classes, and use them to build your UI.
 
 ---
 
-create a lot of small, reusable, focused CSS classes, and use them to build your UI.
+export default Invert
+
+<Image src="images/bad-css-meme.jpg" size="contain" />
 
 ---
 
@@ -808,6 +927,16 @@ CSS as API
 
 ---
 
+a word of caution.
+
+```notes
+Utility-first tiene promotores y detractores. Es "relativamente" nuevo.
+Tiene sentido cuando puedes extraer componentes y reutilizar "grupos" de
+utilidades. Ojo con coherencia.
+```
+
+---
+
 export default Invert
 
 # Wrapping up
@@ -816,10 +945,14 @@ export default Invert
 
 "a lot of things happened in ~40 minutes"
 
+```notes
+VAYA CHAPA
+```
+
 ---
 
 # Normandy CSS
-Scss + ITCSS + BEM + Namespaces
+Scss + ITCSS + BEM + Namespaces + utility-first approach
 
 [Github](https://github.com/calidae/normandy-css)
 
@@ -832,6 +965,17 @@ Sin necesitar una librería entera predefinida como Boostrap.
 ---
 
 # Next steps
+
+---
+
+👋 Scss?
+
+```notes
+custom properties
+nesting (post CSS)
+```
+
+---
 
 JS + CSS = 💖?
 
@@ -874,7 +1018,7 @@ export default Invert
 # Thank you ! 
 What questions do you have?
 
-(ask me anyting! @afontcu_ on Twitter)
+(ask me anything! @afontcu_ on Twitter)
 
 [https://maintainable-scalable-css-commit.now.sh/](https://maintainable-scalable-css-commit.now.sh/)
 
