@@ -1,16 +1,14 @@
 import { future as theme } from 'mdx-deck/themes'
-import style from 'react-syntax-highlighter/styles/prism/solarizedlight'
+import style from 'react-syntax-highlighter/styles/prism/ghcolors'
 import scss from 'react-syntax-highlighter/languages/prism/scss'
 
-const monospace =
-  'SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace'
-
-const font = 'Kavoon, serif'
+const bodyFont = 'Merriweather, serif'
+const titleFont = 'Kavoon, serif'
 
 export default {
   ...theme,
-  monospace,
-  font,
+  monospace: bodyFont,
+  font: titleFont,
   prism: {
     style,
     languages: {
@@ -35,9 +33,13 @@ export default {
       textAlign: 'right',
     },
     li: {
-      fontFamily: monospace,
+      fontFamily: bodyFont,
       fontSize: '1.4em',
       paddingBottom: '1.2em',
+    },
+    pre: {
+      borderRadius: '8px',
+      boxShadow: '2px 4px 10px rgba(0, 0, 0, 0.3)',
     },
   },
   heading: {
@@ -49,7 +51,7 @@ export default {
     link: '#1c7cc2',
   },
   p: {
-    fontFamily: monospace,
+    fontFamily: bodyFont,
     fontSize: '1.5em',
     lineHeight: '1.4',
   },
